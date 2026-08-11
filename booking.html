@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קביעת תור - DALIT KORMAN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-announcement-bar">
+        <div class="announcement-track">
+            ✦ ייעוץ עם קוסמטיקאית מקצועית ✦ DALIT KORMAN - מוצרי טיפוח וקוסמטיקה מתקדמים ✦ שירות לקוחות והתאמה אישית ✦
+        </div>
+    </div>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="product-photos\dalit-korman-logo.jpg" alt="DALIT KORMAN Logo" class="logo-img" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <h1>DALIT KORMAN</h1>
+                        <span>מוצרי טיפוח וקוסמטיקה</span>
+                    </div>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="מה אתם מחפשים?" onkeyup="handleSearchInput(event)">
+                <button class="search-btn" onclick="executeSearch()" aria-label="חיפוש">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <div id="search-dropdown" class="search-dropdown"></div>
+            </div>
+                        <div class="header-actions">
+                <div class="ai-header-icon" onclick="handleAiIconClick()" title="יועצת טיפוח AI">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"></path>
+                    </svg>
+                </div>
+                <div class="booking-header-icon" onclick="handleBookingIconClick()" title="קביעת תור">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
+                <a href="track-order.html" class="track-order-icon" title="מעקב אחר הזמנה">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </a>
+                <div class="wishlist-icon" onclick="toggleWishlistSidebar()" title="רשימת משאלות" style="justify-content: center;">
+                    <div class="wishlist-badge-container">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="user-icon" onclick="handleUserClick()" title="אזור אישי">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span class="user-label" id="user-label">התחברות</span>
+                </div>
+                <div class="cart-icon" onclick="openCart()">
+                    <div class="cart-badge-container">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <span class="cart-label">עגלה</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="all-products.html">כל המוצרים</a></li>
+            <li><a href="all-products.html">טיפוח פנים</a></li>
+            <li><a href="all-products.html?category=serums">סרומים</a></li>
+            <li><a href="all-products.html?category=creams">קרם לחות</a></li>
+            <li><a href="all-products.html?category=cleansers-peels">ניקוי פנים</a></li>
+            <li><a href="all-products.html?category=masks">מסכות</a></li>
+        </ul>
+    </nav>
+
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-auth" onclick="closeAuthModal()">&times;</span>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuthTab('login')">התחברות</button>
+                <button class="auth-tab" onclick="switchAuthTab('register')">הרשמה</button>
+            </div>
+
+            <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+                <input type="email" id="login-email" placeholder="אימייל" required>
+                <input type="password" id="login-password" placeholder="סיסמה" required>
+                <button type="submit" class="auth-submit-btn">היכנס לחשבון</button>
+            </form>
+
+            <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
+                <input type="text" id="reg-name" placeholder="שם מלא" required>
+                <input type="email" id="reg-email" placeholder="אימייל" required>
+                <div id="email-rules" class="field-rules-container">
+                    <div id="rule-email-format" class="rule invalid">✖ כתובת אימייל תקינה (למשל: name@example.com)</div>
+                </div>
+                <input type="tel" id="reg-phone" placeholder="מספר טלפון" required>
+                <div id="phone-rules" class="field-rules-container">
+                    <div id="rule-phone-format" class="rule invalid">✖ מספר נייד תקין להתקשרות (למשל: 0501234567)</div>
+                </div>
+                <div class="gender-select-group">
+                    <label class="gender-select-label">מגדר</label>
+                    <div class="gender-options">
+                        <label class="gender-option">
+                            <input type="radio" name="reg-gender" value="אישה" required>
+                            <span>אישה</span>
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="reg-gender" value="גבר" required>
+                            <span>גבר</span>
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="reg-gender" value="אחר" required>
+                            <span>אחר</span>
+                        </label>
+                    </div>
+                </div>
+                <input type="password" id="reg-password" placeholder="סיסמה" required>
+                <div id="password-rules" class="field-rules-container">
+                    <div id="rule-pass-length" class="rule invalid">✖ לפחות 6 תווים</div>
+                    <div id="rule-pass-capital" class="rule invalid">✖ לפחות אות אנגלית גדולה אחת (A-Z)</div>
+                    <div id="rule-pass-symbol" class="rule invalid">✖ לפחות סמל מיוחד אחד (!@#$%^&*)</div>
+                </div>
+                <button type="submit" class="auth-submit-btn">צור חשבון חדש</button>
+                <p id="verification-notice" class="verification-notice" style="display: none;"></p>
+            </form>
+            
+            <p id="auth-error-msg" class="auth-error"></p>
+        </div>
+        <div id="recaptcha-container"></div>
+    </div>
+
+
+    <main class="ai-page-main">
+        <div class="section-header">
+            <span class="sub-title">קליניקת דלית קורמן</span>
+            <h3>קביעת תור לטיפול</h3>
+            <div class="title-underline"></div>
+        </div>
+
+        <!-- Shown only to logged-out visitors -->
+        <div id="booking-login-required" class="ai-login-required" style="display:none;">
+            <p>קביעת תורים זמינה ללקוחות רשומים בלבד.</p>
+            <button class="ai-primary-btn" onclick="handleUserClick()">התחברות / הרשמה</button>
+        </div>
+
+        <!-- Shown only to logged-in visitors -->
+        <div id="booking-page-content" style="display:none;">
+            <div class="booking-progress-stepper" id="booking-progress-stepper">
+                <div class="progress-step active" data-step="1" onclick="goToStepByClick(1)">
+                    <div class="progress-step-circle">1</div>
+                    <span class="progress-step-label">טיפול</span>
+                </div>
+                <div class="progress-step-line"></div>
+                <div class="progress-step" data-step="2" onclick="goToStepByClick(2)">
+                    <div class="progress-step-circle">2</div>
+                    <span class="progress-step-label">תאריך</span>
+                </div>
+                <div class="progress-step-line"></div>
+                <div class="progress-step" data-step="3" onclick="goToStepByClick(3)">
+                    <div class="progress-step-circle">3</div>
+                    <span class="progress-step-label">שעה</span>
+                </div>
+                <div class="progress-step-line"></div>
+                <div class="progress-step" data-step="4" onclick="goToStepByClick(4)">
+                    <div class="progress-step-circle">4</div>
+                    <span class="progress-step-label">אישור</span>
+                </div>
+            </div>
+
+            <div class="booking-layout">
+                <!-- ============ BOOKING FORM ============ -->
+                <div class="booking-form-card">
+                    <div id="booking-edit-banner" class="booking-edit-banner" style="display:none;">
+                        ✏️ עריכת תור קיים - בחרי תאריך ושעה חדשים
+                        <button type="button" onclick="cancelEditMode()">ביטול עריכה</button>
+                    </div>
+
+                    <div class="booking-step-viewport">
+                        <div class="booking-step step-visible" id="booking-step-treatment">
+                            <h4><span class="booking-step-num">1</span> בחרי טיפול</h4>
+                            <div class="treatment-select-grid" id="treatment-select-grid"></div>
+                        </div>
+
+                        <div class="booking-step" id="booking-step-date" style="display:none;">
+                            <h4><span class="booking-step-num">2</span> בחרי תאריך</h4>
+                            <div class="custom-date-picker">
+                                <button type="button" class="date-picker-trigger" id="date-picker-trigger" onclick="toggleCalendarDropdown()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                    <span id="date-picker-display-text">בחרי תאריך</span>
+                                    <svg class="date-picker-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </button>
+                                <div class="calendar-dropdown" id="calendar-dropdown">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav-btn" onclick="changeCalendarMonth(-1)" aria-label="חודש קודם">›</button>
+                                        <span class="calendar-month-label" id="calendar-month-label"></span>
+                                        <button type="button" class="calendar-nav-btn" onclick="changeCalendarMonth(1)" aria-label="חודש הבא">‹</button>
+                                    </div>
+                                    <div class="calendar-weekdays">
+                                        <span>א</span><span>ב</span><span>ג</span><span>ד</span><span>ה</span><span>ו</span><span>ש</span>
+                                    </div>
+                                    <div class="calendar-days-grid" id="calendar-days-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-step" id="booking-step-time" style="display:none;">
+                            <h4><span class="booking-step-num">3</span> בחרי שעה</h4>
+                            <div class="time-slots-grid" id="time-slots-grid"></div>
+                        </div>
+
+                        <div class="booking-step" id="booking-step-confirm" style="display:none;">
+                            <h4><span class="booking-step-num">4</span> אישור התור</h4>
+                            <div class="booking-summary-box" id="booking-summary-box"></div>
+                            <button class="ai-primary-btn" id="booking-confirm-btn" onclick="submitBooking()" style="width:100%;">אישור קביעת התור</button>
+                        </div>
+
+                        <div class="booking-success-box" id="booking-success-box" style="display:none;">
+                            <svg class="success-checkmark-svg" viewBox="0 0 52 52">
+                                <circle class="success-checkmark-circle" cx="26" cy="26" r="24" fill="none"/>
+                                <path class="success-checkmark-check" fill="none" d="M14 27l7 7 16-16"/>
+                            </svg>
+                            <h4 id="booking-success-title">התור נקבע בהצלחה!</h4>
+                            <p id="booking-success-details"></p>
+                            <button class="ai-primary-btn" onclick="resetBookingForm()">קביעת תור נוסף</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ MY APPOINTMENTS ============ -->
+                <div class="my-appointments-card">
+                    <h4>התורים הקרובים שלי</h4>
+                    <div id="my-appointments-list">
+                        <div class="ai-conversations-loading">טוען תורים...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+    <div class="footer-background-text">GLOWING SKIN EVERY DAY</div>
+    
+    <div class="footer-container">
+        <div class="footer-col footer-about">
+            <a href="index.html" class="footer-logo">
+                <img src="product-photos/dalit-korman-logo.jpg" alt="DALIT KORMAN Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                <div class="footer-logo-text">
+                    <h2>DALIT KORMAN</h2>
+                    <span>מוצרי טיפוח וקוסמטיקה</span>
+                </div>
+            </a>
+            <p class="footer-tagline">
+                טיפוח מתקדם והתאמה אישית של מוצרי קוסמטיקה מקצועיים. העור שלך בידיים הבטוחות ביותר.
+            </p>
+            <div class="footer-socials">
+                <a href="https://wa.me/972504470030" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/dalit_beauty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon instagram" title="Instagram">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>קישורים מהירים</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="all-products.html">כל המוצרים</a></li>
+                <li><a href="account.html">החשבון שלי וההזמנות</a></li>
+                <li><a href="booking.html">קביעת תור</a></li>
+                <li><a href="ai-consultant.html">יועצת טיפוח AI</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>שירות לקוחות וייעוץ</h3>
+            <ul class="footer-contact-info">
+                <li>
+                    <strong>טלפון / WhatsApp:</strong>
+                    <a href="https://wa.me/972504470030" target="_blank">050-4470030</a>
+                </li>
+                <li>
+                    <strong>איסוף הזמנות:</strong> בקליניקה בלבד (בתיאום מראש)
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>אופן ההזמנה והתשלום</h3>
+            <div class="footer-notice-box">
+                <p><strong>איסוף ותשלום בקליניקה:</strong></p>
+                <p>האתר מיועד לשריון והורדת הזמנות בלבד. התשלום יתבצע בעת איסוף המוצרים בקליניקה באמצעות **אפליקציית Bit** או במזומן.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <p>© 2026 DALIT KORMAN. כל הזכויות שמורות.</p>
+            <div class="payment-badge">
+                <span>תשלום בביט / מזומן באיסוף עצמי</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script type="module" src="firebase-init.js"></script>
+    <script src="script.js"></script>
+    <script>
+        /* ============================================================
+           Booking page logic
+           ============================================================ */
+
+        let selectedTreatment = null; // { id, name, durationMinutes }
+        let selectedDate = null;      // "YYYY-MM-DD"
+        let selectedTime = null;      // "HH:MM"
+        let editingAppointmentId = null; // set when editing an existing appointment instead of creating a new one
+        let currentStepNum = 1;
+
+        // Small set of distinct icons so the treatment grid is easier to scan
+        // at a glance, not just a wall of text.
+        const TREATMENT_ICONS = {
+            'consult': '<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>',
+            'classic-facial': '<path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"></path>',
+            'bioplasma': '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>',
+            'rf': '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>',
+            'acne-face': '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>',
+            'acne-body': '<path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 4 10.2C4 17.5 12 22 12 22z"></path>',
+            'pigmentation': '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>',
+            'phototherapy': '<circle cx="12" cy="12" r="4"></circle><path d="M12 3v1M12 20v1M4.2 4.2l.8.8M19 19l.8.8M3 12h1M20 12h1M4.2 19.8l.8-.8M19 5l.8-.8"></path>'
+        };
+
+        const STEP_IDS = ['booking-step-treatment', 'booking-step-date', 'booking-step-time', 'booking-step-confirm'];
+
+        function renderTreatmentOptions() {
+            const grid = document.getElementById('treatment-select-grid');
+            grid.innerHTML = TREATMENTS_LIST.map((t, i) => `
+                <div class="treatment-option-card" data-id="${t.id}" onclick="selectTreatment('${t.id}')" style="animation-delay: ${i * 0.05}s">
+                    <div class="treatment-option-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${TREATMENT_ICONS[t.id] || ''}</svg>
+                    </div>
+                    <span class="treatment-option-name">${t.name}</span>
+                    <span class="treatment-option-duration">${t.durationMinutes} דקות</span>
+                </div>
+            `).join('');
+        }
+
+        function updateProgressStepper(activeStep) {
+            document.querySelectorAll('.progress-step').forEach(el => {
+                const stepNum = Number(el.dataset.step);
+                el.classList.remove('active', 'completed');
+                if (stepNum < activeStep) el.classList.add('completed');
+                else if (stepNum === activeStep) el.classList.add('active');
+            });
+        }
+
+        /**
+         * Slides from the currently-visible step to a target step. Forward
+         * (higher step number) exits the old step to the right and brings
+         * the new one in from the left; backward reverses both directions.
+         * Only ever one step is display:block at a time once the animation
+         * finishes, so layout never awkwardly stacks two steps.
+         *
+         * The viewport's height is temporarily locked to whichever step is
+         * taller during the transition - without this, the outgoing step
+         * becoming position:absolute removes it from the layout flow
+         * immediately, which can make the container suddenly collapse/jump
+         * in height if the next step's content is much shorter (e.g. many
+         * treatment cards -> a single date button), looking janky.
+         */
+        function transitionToStep(targetStepNum) {
+            if (targetStepNum === currentStepNum) return;
+            const direction = targetStepNum > currentStepNum ? 'forward' : 'backward';
+            const outgoingEl = document.getElementById(STEP_IDS[currentStepNum - 1]);
+            const incomingEl = document.getElementById(STEP_IDS[targetStepNum - 1]);
+            const viewport = document.querySelector('.booking-step-viewport');
+
+            // Measure both heights before anything moves, then lock to the taller one
+            const outgoingHeight = outgoingEl.offsetHeight;
+            incomingEl.style.display = 'block';
+            incomingEl.style.visibility = 'hidden';
+            const incomingHeight = incomingEl.offsetHeight;
+            incomingEl.style.visibility = '';
+            if (viewport) viewport.style.minHeight = `${Math.max(outgoingHeight, incomingHeight)}px`;
+
+            const outAnimClass = direction === 'forward' ? 'anim-out-right' : 'anim-out-left';
+            const inAnimClass = direction === 'forward' ? 'anim-in-left' : 'anim-in-right';
+
+            outgoingEl.classList.add(outAnimClass);
+            const onOutEnd = () => {
+                outgoingEl.style.display = 'none';
+                outgoingEl.classList.remove(outAnimClass);
+                outgoingEl.removeEventListener('animationend', onOutEnd);
+                if (viewport) viewport.style.minHeight = ''; // release the lock once settled
+            };
+            outgoingEl.addEventListener('animationend', onOutEnd);
+
+            incomingEl.classList.add(inAnimClass);
+            const onInEnd = () => {
+                incomingEl.classList.remove(inAnimClass);
+                incomingEl.removeEventListener('animationend', onInEnd);
+            };
+            incomingEl.addEventListener('animationend', onInEnd);
+
+            currentStepNum = targetStepNum;
+            updateProgressStepper(targetStepNum);
+        }
+
+        /**
+         * Lets the customer click an earlier step in the stepper to go back
+         * and revise a choice. Only allows navigating to a step that's
+         * already been reached (not skipping ahead).
+         */
+        function goToStepByClick(stepNum) {
+            if (stepNum >= currentStepNum) return; // only back-navigation via clicks
+            if (stepNum === 1 && editingAppointmentId) return; // can't change treatment while editing
+            transitionToStep(stepNum);
+        }
+
+        function selectTreatment(treatmentId) {
+            selectedTreatment = TREATMENTS_LIST.find(t => t.id === treatmentId);
+            selectedDate = null;
+            selectedTime = null;
+            selectedTimeReset();
+
+            document.querySelectorAll('.treatment-option-card').forEach(el => {
+                el.classList.toggle('selected', el.dataset.id === treatmentId);
+            });
+
+            resetCalendarSelection();
+            transitionToStep(2);
+        }
+
+        function selectedTimeReset() {
+            document.getElementById('date-picker-display-text').textContent = 'בחרי תאריך';
+            document.getElementById('date-picker-trigger').classList.remove('has-value');
+        }
+
+        /* ================= CUSTOM CALENDAR WIDGET ================= */
+        let calendarViewYear, calendarViewMonth; // month is 0-indexed
+        let calendarMinDate, calendarMaxDate;
+        const HEBREW_MONTH_NAMES = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+
+        function resetCalendarSelection() {
+            const today = new Date();
+            calendarViewYear = today.getFullYear();
+            calendarViewMonth = today.getMonth();
+            const maxD = new Date();
+            maxD.setDate(maxD.getDate() + 60);
+            calendarMinDate = window.formatDateLocal(today);
+            calendarMaxDate = window.formatDateLocal(maxD);
+        }
+
+        function toggleCalendarDropdown() {
+            const dropdown = document.getElementById('calendar-dropdown');
+            if (dropdown.classList.contains('open')) {
+                closeCalendarDropdown();
+            } else {
+                renderCalendarGrid();
+                dropdown.classList.add('open');
+                document.addEventListener('click', closeCalendarOnOutsideClick);
+            }
+        }
+
+        function closeCalendarDropdown() {
+            document.getElementById('calendar-dropdown').classList.remove('open');
+            document.removeEventListener('click', closeCalendarOnOutsideClick);
+        }
+
+        function closeCalendarOnOutsideClick(e) {
+            const picker = document.querySelector('.custom-date-picker');
+            if (picker && !picker.contains(e.target)) closeCalendarDropdown();
+        }
+
+        function changeCalendarMonth(delta) {
+            calendarViewMonth += delta;
+            if (calendarViewMonth > 11) { calendarViewMonth = 0; calendarViewYear++; }
+            if (calendarViewMonth < 0) { calendarViewMonth = 11; calendarViewYear--; }
+            renderCalendarGrid();
+        }
+
+        function renderCalendarGrid() {
+            document.getElementById('calendar-month-label').textContent = `${HEBREW_MONTH_NAMES[calendarViewMonth]} ${calendarViewYear}`;
+
+            const firstOfMonth = new Date(calendarViewYear, calendarViewMonth, 1);
+            const startWeekday = firstOfMonth.getDay(); // 0 = Sunday
+            const daysInMonth = new Date(calendarViewYear, calendarViewMonth + 1, 0).getDate();
+            const todayStr = window.formatDateLocal(new Date());
+
+            let html = '';
+            for (let i = 0; i < startWeekday; i++) {
+                html += '<span class="calendar-day-cell empty"></span>';
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateObj = new Date(calendarViewYear, calendarViewMonth, d);
+                const dateStr = window.formatDateLocal(dateObj);
+                const isClosed = !BUSINESS_HOURS[dateObj.getDay()];
+                const isOutOfRange = dateStr < calendarMinDate || dateStr > calendarMaxDate;
+                const isDisabled = isClosed || isOutOfRange;
+                const isToday = dateStr === todayStr;
+                const isSelected = dateStr === selectedDate;
+
+                let classes = 'calendar-day-cell';
+                if (isDisabled) classes += ' disabled';
+                if (isToday) classes += ' today';
+                if (isSelected) classes += ' selected';
+
+                html += isDisabled
+                    ? `<span class="${classes}">${d}</span>`
+                    : `<button type="button" class="${classes}" onclick="selectCalendarDate('${dateStr}')">${d}</button>`;
+            }
+
+            document.getElementById('calendar-days-grid').innerHTML = html;
+        }
+
+        async function selectCalendarDate(dateStr) {
+            selectedDate = dateStr;
+            selectedTime = null;
+
+            const dateObj = new Date(dateStr + 'T00:00:00');
+            document.getElementById('date-picker-display-text').textContent = dateObj.toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
+            document.getElementById('date-picker-trigger').classList.add('has-value');
+            closeCalendarDropdown();
+
+            if (!selectedTreatment) return;
+
+            const slotsGrid = document.getElementById('time-slots-grid');
+            slotsGrid.innerHTML = '<div class="ai-conversations-loading">בודקת שעות פנויות...</div>';
+            transitionToStep(3);
+
+            const slots = await window.getAvailableSlotsForDate(selectedDate, selectedTreatment.durationMinutes, editingAppointmentId);
+
+            if (slots.length === 0) {
+                slotsGrid.innerHTML = '<div class="ai-conversations-empty">אין שעות פנויות בתאריך זה. נסי תאריך אחר.</div>';
+                return;
+            }
+
+            slotsGrid.innerHTML = slots.map((time, i) => `
+                <button type="button" class="time-slot-btn" data-time="${time}" onclick="selectTime('${time}')" style="animation-delay: ${i * 0.02}s">${time}</button>
+            `).join('');
+        }
+        /* ================= END CUSTOM CALENDAR WIDGET ================= */
+
+        function selectTime(time) {
+            selectedTime = time;
+            document.querySelectorAll('.time-slot-btn').forEach(el => {
+                el.classList.toggle('selected', el.dataset.time === time);
+            });
+
+            const summaryBox = document.getElementById('booking-summary-box');
+            const dateObj = new Date(selectedDate + 'T00:00:00');
+            const dateDisplay = dateObj.toLocaleDateString('he-IL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            summaryBox.innerHTML = `
+                <div class="booking-summary-row"><strong>טיפול:</strong> ${selectedTreatment.name}</div>
+                <div class="booking-summary-row"><strong>תאריך:</strong> ${dateDisplay}</div>
+                <div class="booking-summary-row"><strong>שעה:</strong> ${selectedTime}</div>
+                <div class="booking-summary-row"><strong>משך משוער:</strong> ${selectedTreatment.durationMinutes} דקות</div>
+            `;
+            document.getElementById('booking-confirm-btn').textContent = editingAppointmentId ? 'עדכון התור' : 'אישור קביעת התור';
+
+            setTimeout(() => transitionToStep(4), 150); // brief pause so the selection itself is visible before sliding on
+        }
+
+        async function submitBooking() {
+            if (editingAppointmentId) return submitAppointmentEdit();
+
+            const user = window.auth.currentUser;
+            if (!user || !selectedTreatment || !selectedDate || !selectedTime) return;
+
+            const btn = document.getElementById('booking-confirm-btn');
+            btn.disabled = true;
+            btn.textContent = 'קובעת תור...';
+
+            try {
+                const userDoc = await window.getDoc(window.doc(window.db, 'Users', user.uid));
+                const userData = userDoc.exists() ? userDoc.data() : {};
+
+                const result = await window.createAppointment(user.uid, {
+                    userName: userData.fullName || user.email,
+                    userEmail: user.email,
+                    userPhone: userData.phone || '',
+                    treatmentId: selectedTreatment.id,
+                    treatmentName: selectedTreatment.name,
+                    durationMinutes: selectedTreatment.durationMinutes,
+                    date: selectedDate,
+                    time: selectedTime
+                });
+
+                if (!result.success) {
+                    alert(result.error || 'הייתה שגיאה בקביעת התור.');
+                    btn.disabled = false;
+                    btn.textContent = 'אישור קביעת התור';
+                    selectCalendarDate(selectedDate); // someone else may have just taken this slot - refresh
+                    return;
+                }
+
+                const dateObj = new Date(selectedDate + 'T00:00:00');
+                const dateDisplay = dateObj.toLocaleDateString('he-IL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('booking-success-title').textContent = 'התור נקבע בהצלחה!';
+                document.getElementById('booking-success-details').textContent = `${selectedTreatment.name} · ${dateDisplay} בשעה ${selectedTime}`;
+                showSuccessState();
+
+                loadMyAppointments();
+            } catch (err) {
+                console.error('שגיאה בקביעת תור:', err);
+                alert('הייתה שגיאה בקביעת התור. נסי שוב.');
+                btn.disabled = false;
+                btn.textContent = 'אישור קביעת התור';
+            }
+        }
+
+        async function submitAppointmentEdit() {
+            const btn = document.getElementById('booking-confirm-btn');
+            btn.disabled = true;
+            btn.textContent = 'מעדכנת...';
+
+            const result = await window.updateAppointmentDateTime(editingAppointmentId, selectedDate, selectedTime, selectedTreatment.durationMinutes);
+
+            if (!result.success) {
+                alert(result.error || 'הייתה שגיאה בעדכון התור.');
+                btn.disabled = false;
+                btn.textContent = 'עדכון התור';
+                selectCalendarDate(selectedDate);
+                return;
+            }
+
+            const dateObj = new Date(selectedDate + 'T00:00:00');
+            const dateDisplay = dateObj.toLocaleDateString('he-IL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('booking-success-title').textContent = 'התור עודכן בהצלחה!';
+            document.getElementById('booking-success-details').textContent = `${selectedTreatment.name} · ${dateDisplay} בשעה ${selectedTime}`;
+            showSuccessState();
+
+            editingAppointmentId = null;
+            document.getElementById('booking-edit-banner').style.display = 'none';
+            loadMyAppointments();
+        }
+
+        function showSuccessState() {
+            document.getElementById(STEP_IDS[currentStepNum - 1]).style.display = 'none';
+            document.getElementById('booking-success-box').style.display = 'block';
+            document.getElementById('booking-progress-stepper').style.display = 'none';
+        }
+
+        function resetBookingForm() {
+            selectedTreatment = null;
+            selectedDate = null;
+            selectedTime = null;
+            editingAppointmentId = null;
+            currentStepNum = 1;
+
+            document.getElementById('booking-edit-banner').style.display = 'none';
+            document.getElementById('booking-success-box').style.display = 'none';
+            STEP_IDS.forEach((id, i) => {
+                const el = document.getElementById(id);
+                el.style.display = i === 0 ? 'block' : 'none';
+                el.classList.remove('anim-out-right', 'anim-out-left', 'anim-in-left', 'anim-in-right');
+            });
+            document.getElementById('booking-confirm-btn').disabled = false;
+            document.getElementById('booking-confirm-btn').textContent = 'אישור קביעת התור';
+            document.querySelectorAll('.treatment-option-card').forEach(el => el.classList.remove('selected'));
+            selectedTimeReset();
+            updateProgressStepper(1);
+            document.getElementById('booking-progress-stepper').style.display = 'flex';
+        }
+
+        function cancelEditMode() {
+            resetBookingForm();
+        }
+
+        async function loadMyAppointments() {
+            const user = window.auth.currentUser;
+            const listEl = document.getElementById('my-appointments-list');
+            if (!user) return;
+
+            try {
+                const q = window.query(
+                    window.collection(window.db, 'Appointments'),
+                    window.where('userId', '==', user.uid),
+                    window.where('status', '==', 'confirmed')
+                );
+                const snap = await window.getDocs(q);
+                const appointments = [];
+                snap.forEach(docSnap => appointments.push({ id: docSnap.id, ...docSnap.data() }));
+
+                // Only future appointments, soonest first
+                const todayStr = window.formatDateLocal(new Date());
+                const upcoming = appointments
+                    .filter(a => a.date >= todayStr)
+                    .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+
+                if (upcoming.length === 0) {
+                    listEl.innerHTML = '<div class="ai-conversations-empty">אין לך תורים קרובים</div>';
+                    return;
+                }
+
+                listEl.innerHTML = upcoming.map(a => {
+                    const dateObj = new Date(a.date + 'T00:00:00');
+                    const dateDisplay = dateObj.toLocaleDateString('he-IL', { weekday: 'short', day: 'numeric', month: 'short' });
+                    return `
+                        <div class="my-appointment-item">
+                            <div>
+                                <div class="my-appointment-treatment">${a.treatmentName}</div>
+                                <div class="my-appointment-datetime">${dateDisplay} · ${a.time}</div>
+                            </div>
+                            <div class="my-appointment-actions">
+                                <button class="my-appointment-edit-btn" onclick='startEditAppointment(${JSON.stringify(a)})'>עריכה</button>
+                                <button class="my-appointment-cancel-btn" onclick="cancelMyAppointment('${a.id}')">ביטול</button>
+                            </div>
+                        </div>`;
+                }).join('');
+            } catch (err) {
+                console.error('שגיאה בטעינת תורים:', err);
+                listEl.innerHTML = '<div class="ai-conversations-empty">שגיאה בטעינת התורים</div>';
+            }
+        }
+
+        /**
+         * Starts editing an existing appointment: locks in its treatment,
+         * jumps straight to the date step (skipping treatment selection,
+         * since that's not changing), and flags submitBooking() to update
+         * instead of create.
+         */
+        function startEditAppointment(appointment) {
+            editingAppointmentId = appointment.id;
+            selectedTreatment = TREATMENTS_LIST.find(t => t.id === appointment.treatmentId) || {
+                id: appointment.treatmentId, name: appointment.treatmentName, durationMinutes: appointment.durationMinutes
+            };
+            selectedDate = null;
+            selectedTime = null;
+
+            document.getElementById('booking-edit-banner').style.display = 'flex';
+            document.querySelectorAll('.treatment-option-card').forEach(el => {
+                el.classList.toggle('selected', el.dataset.id === selectedTreatment.id);
+            });
+
+            resetCalendarSelection();
+            selectedTimeReset();
+            currentStepNum = 1; // so transitionToStep(2) reads as "forward"
+            document.getElementById(STEP_IDS[0]).style.display = 'none';
+            transitionToStep(2);
+
+            document.getElementById('booking-form-card') && document.querySelector('.booking-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        async function cancelMyAppointment(appointmentId) {
+            const confirmed = confirm('לבטל את התור?');
+            if (!confirmed) return;
+
+            try {
+                await window.updateDoc(window.doc(window.db, 'Appointments', appointmentId), { status: 'cancelled' });
+                loadMyAppointments();
+            } catch (err) {
+                console.error('שגיאה בביטול תור:', err);
+                alert('הייתה שגיאה בביטול התור. נסי שוב.');
+            }
+        }
+
+        function initBookingPage() {
+            if (window.auth && window.collection) {
+                window.auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        document.getElementById('booking-login-required').style.display = 'none';
+                        document.getElementById('booking-page-content').style.display = 'block';
+                        resetCalendarSelection();
+                        renderTreatmentOptions();
+                        loadMyAppointments();
+                    } else {
+                        document.getElementById('booking-login-required').style.display = 'block';
+                        document.getElementById('booking-page-content').style.display = 'none';
+                    }
+                });
+            } else {
+                setTimeout(initBookingPage, 100);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initBookingPage);
+    </script>
+</body>
+</html>
