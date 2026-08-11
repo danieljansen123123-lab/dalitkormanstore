@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פרטי החשבון - DALIT KORMAN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="top-announcement-bar">
+        <div class="announcement-track">
+            ✦ ייעוץ עם קוסמטיקאית מקצועית ✦ DALIT KORMAN - מוצרי טיפוח וקוסמטיקה מתקדמים ✦ שירות לקוחות והתאמה אישית ✦
+        </div>
+    </div>
+        <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="product-photos\dalit-korman-logo.jpg" alt="DALIT KORMAN Logo" class="logo-img" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <h1>DALIT KORMAN</h1>
+                        <span>מוצרי טיפוח וקוסמטיקה</span>
+                    </div>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="מה אתם מחפשים?" onkeyup="handleSearchInput(event)">
+                <button class="search-btn" onclick="executeSearch()" aria-label="חיפוש">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <div id="search-dropdown" class="search-dropdown"></div>
+            </div>
+            <div class="header-actions">
+                                            <a href="track-order.html" class="track-order-icon" title="מעקב אחר הזמנה">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+    </a>
+                    <div class="wishlist-icon" onclick="toggleWishlistSidebar()" title="רשימת משאלות" style="justify-content: center;">
+                    <div class="wishlist-badge-container">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="user-icon" onclick="handleUserClick()" title="אזור אישי">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span class="user-label" id="user-label">התחברות</span>
+                </div>
+
+
+                <div class="cart-icon" onclick="openCart()">
+                    <div class="cart-badge-container">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="cart-label">סל קניות</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="all-products.html">כל המוצרים</a></li>
+            <li><a href="#">טיפוח פנים</a></li>
+            <li><a href="#">סרומים</a></li>
+            <li><a href="#">קרם לחות</a></li>
+            <li><a href="#">ניקוי פנים</a></li>
+            <li><a href="#">מסכות</a></li>
+        </ul>
+    </nav>
+
+    <main style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+        <div class="section-header">
+            <h3>האזור האישי שלי</h3>
+            <div class="title-underline"></div>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+            
+            <div style="display: flex; gap: 20px; border-bottom: 2px solid #f0f0f0; margin-bottom: 30px; padding-bottom: 10px;">
+                <a href="account.html" style="text-decoration: none; color: #888; font-size: 1.1rem; padding-bottom: 10px; margin-bottom: -12px; transition: 0.3s;">ההזמנות שלי</a>
+                
+                <a href="account-details.html" style="text-decoration: none; color: #e91e63; font-size: 1.1rem; border-bottom: 2px solid #e91e63; padding-bottom: 10px; margin-bottom: -12px; font-weight: bold;">פרטי החשבון</a>
+                
+                <button onclick="handleLogout()" style="margin-right: auto; background: none; border: 1px solid #ccc; padding: 5px 15px; border-radius: 5px; cursor: pointer; color: #555; transition: 0.2s;">התנתק</button>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 15px; font-size: 1.2rem;">עדכון פרטים אישיים</h3>
+                <form onsubmit="handleUpdateDetails(event)" style="max-width: 400px; display: flex; flex-direction: column; gap: 15px;">
+                    <label style="font-size: 0.9rem; color: #555;">שם מלא:</label>
+                    <input type="text" id="acc-name" required style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;">
+                    
+                    <label style="font-size: 0.9rem; color: #555;">מספר טלפון:</label>
+                    <input type="tel" id="acc-phone" required style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;">
+                    
+                    <label style="font-size: 0.9rem; color: #555;">אימייל (לא ניתן לשינוי):</label>
+                    <input type="email" id="acc-email" disabled style="padding: 12px; border: 1px solid #eee; border-radius: 5px; font-size: 1rem; background: #f9f9f9; color: #888;">
+                    
+                    <button type="submit" style="background: #333; color: white; border: none; padding: 12px; border-radius: 5px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px;">שמור שינויים</button>
+                    <p id="update-msg" style="color: #e91e63; font-weight: bold; font-size: 0.9rem; margin-top: 5px;"></p>
+                </form>
+
+                <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
+
+                <h3 style="margin-bottom: 15px; font-size: 1.2rem;">שינוי סיסמה</h3>
+                <p style="font-size: 0.95rem; color: #555; margin-bottom: 15px; line-height: 1.5;">
+                    מטעמי אבטחה, שינוי סיסמה מתבצע דרך האימייל. לחץ על הכפתור למטה, ואנחנו נשלח לך מיד קישור מאובטח להגדרת סיסמה חדשה.
+                </p>
+                <button onclick="handlePasswordReset()" style="background: #e91e63; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-size: 1.1rem; cursor: pointer; transition: 0.3s;">שלח לי קישור לאיפוס סיסמה</button>
+                <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
+
+                    <h3 style="margin-bottom: 15px; font-size: 1.2rem; color: #d9534f;">מחיקת חשבון</h3>
+                    <p style="font-size: 0.95rem; color: #555; margin-bottom: 15px; line-height: 1.5;">
+                        שימו לב: מחיקת החשבון הינה פעולה לצמיתות. כל הפרטים וההיסטוריה המשוייכים לחשבון יירדו מנעילת המערכת.
+                    </p>
+                    <button onclick="handleDeleteAccount()" style="background: #d9534f; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-size: 1.1rem; cursor: pointer; transition: 0.3s;">
+                מחק את החשבון שלי
+</button>
+<p id="delete-msg" style="font-weight: bold; font-size: 0.9rem; margin-top: 10px;"></p>
+            </div>
+            
+            </div>
+
+        </div>
+    </main>
+
+ <footer class="site-footer">
+    <div class="footer-background-text">GLOWING SKIN EVERY DAY</div>
+    
+    <div class="footer-container">
+        <div class="footer-col footer-about">
+            <a href="index.html" class="footer-logo">
+                <img src="product-photos/dalit-korman-logo.jpg" alt="DALIT KORMAN Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                <div class="footer-logo-text">
+                    <h2>DALIT KORMAN</h2>
+                    <span>מוצרי טיפוח וקוסמטיקה</span>
+                </div>
+            </a>
+            <p class="footer-tagline">
+                טיפוח מתקדם והתאמה אישית של מוצרי קוסמטיקה מקצועיים. העור שלך בידיים הבטוחות ביותר.
+            </p>
+            <div class="footer-socials">
+                <a href="https://wa.me/972504470030" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/dalit_beauty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon instagram" title="Instagram">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>קישורים מהירים</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="all-products.html">כל המוצרים</a></li>
+                <li><a href="account.html">החשבון שלי וההזמנות</a></li>
+                <li><a href="account-details.html">עדכון פרטים אישיים</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>שירות לקוחות וייעוץ</h3>
+            <ul class="footer-contact-info">
+                <li>
+                    <strong>טלפון / WhatsApp:</strong>
+                    <a href="https://wa.me/972504470030" target="_blank">050-4470030</a>
+                </li>
+                <li>
+                    <strong>איסוף הזמנות:</strong> בקליניקה בלבד (בתיאום מראש)
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>אופן ההזמנה והתשלום</h3>
+            <div class="footer-notice-box">
+                <p><strong>איסוף ותשלום בקליניקה:</strong></p>
+                <p>האתר מיועד לשריון והורדת הזמנות בלבד. התשלום יתבצע בעת איסוף המוצרים בקליניקה באמצעות **אפליקציית Bit** או במזומן.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <p>© 2026 DALIT KORMAN. כל הזכויות שמורות.</p>
+            <div class="payment-badge">
+                <span>תשלום בביט / מזומן באיסוף עצמי</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="delete-modal-overlay" class="custom-modal-overlay">
+    <div class="custom-modal-card">
+        <div class="custom-modal-icon warning">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d9534f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+        </div>
+        <h3 class="custom-modal-title">מחיקת חשבון לצמיתות</h3>
+        <p class="custom-modal-desc">
+            האם אתה בטוח שברצונך למחוק את החשבון? פעולה זו הינה לצמיתות ולא ניתן יהיה לשחזר את פרטי החשבון וההיסטוריה.
+        </p>
+        <div class="custom-modal-actions">
+            <button type="button" class="modal-cancel-btn" onclick="closeDeleteModal()">ביטול</button>
+            <button type="button" id="confirm-delete-btn" class="modal-delete-btn" onclick="executeAccountDeletion()">
+                <span class="btn-text">כן, מחק חשבון</span>
+                <span class="btn-spinner"></span>
+                <span class="btn-success-check">✓</span>
+            </button>
+        </div>
+    </div>
+</div>
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-auth" onclick="closeAuthModal()">&times;</span>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuthTab('login')">התחברות</button>
+                <button class="auth-tab" onclick="switchAuthTab('register')">הרשמה</button>
+            </div>
+
+            <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+                <input type="email" id="login-email" placeholder="אימייל" required>
+                <input type="password" id="login-password" placeholder="סיסמה" required>
+                <button type="submit" class="auth-submit-btn">היכנס לחשבון</button>
+            </form>
+
+            <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
+                <input type="text" id="reg-name" placeholder="שם מלא" required>
+
+                <input type="email" id="reg-email" placeholder="אימייל" required>
+                <div id="email-rules" class="field-rules-container">
+                    <div id="rule-email-format" class="rule invalid">✖ כתובת אימייל תקינה (למשל: name@example.com)</div>
+                </div>
+
+                <input type="tel" id="reg-phone" placeholder="מספר טלפון" required>
+                <div id="phone-rules" class="field-rules-container">
+                    <div id="rule-phone-format" class="rule invalid">✖ מספר נייד תקין להתקשרות (למשל: 0501234567)</div>
+                </div>
+
+                <input type="password" id="reg-password" placeholder="סיסמה" required>
+                <div id="password-rules" class="field-rules-container">
+                    <div id="rule-pass-length" class="rule invalid">✖ לפחות 6 תווים</div>
+                    <div id="rule-pass-capital" class="rule invalid">✖ לפחות אות אנגלית גדולה אחת (A-Z)</div>
+                    <div id="rule-pass-symbol" class="rule invalid">✖ לפחות סמל מיוחד אחד (!@#$%^&*)</div>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">צור חשבון חדש</button>
+
+                <p id="verification-notice" class="verification-notice" style="display: none;"></p>
+            </form>
+            
+            <p id="auth-error-msg" class="auth-error"></p>
+        </div>
+        <div id="recaptcha-container"></div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="closeCart()"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>סל הקניות שלי</h3>
+            <button class="close-cart-btn" onclick="closeCart()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>סה"כ לתשלום:</span>
+                <span id="cart-total-price">₪0</span>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">המשך לתשלום</button>
+        </div>
+    </div>
+    <div class="wishlist-overlay" id="wishlist-overlay" onclick="closeWishlistSidebar()"></div>
+    <div class="wishlist-sidebar" id="wishlist-sidebar">
+        <div class="wishlist-header">
+            <h3>רשימת המשאלות שלי</h3>
+            <button class="close-wishlist-btn" onclick="closeWishlistSidebar()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlist-items-container">
+        </div>
+</div>
+
+    <script type="module" src="firebase-init.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
