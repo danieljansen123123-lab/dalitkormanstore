@@ -153,28 +153,6 @@ body {
     justify-content: center; 
     align-items: center; 
 }
-.autocomplete-dropdown, .search-dropdown { 
-    position: absolute; 
-    top: calc(100% + 8px); 
-    right: 0; 
-    width: 100%; 
-    min-width: 320px;
-    background: white; 
-    border: 1px solid #eee; 
-    border-radius: 8px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-    z-index: 1000; 
-    max-height: 300px; 
-    overflow-y: auto;
-
-    display: block !important; 
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    transform: translateY(-15px) !important;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s !important;
-}
-
 .search-dropdown, .autocomplete-dropdown { 
     position: absolute; 
     top: calc(100% + 8px); 
@@ -282,6 +260,19 @@ body {
 
 .main-nav ul li a.nav-ai-link:hover {
     background: #fce4ec;
+}
+
+.main-nav ul li a.nav-active-category {
+    color: #fff;
+    background: #e91e63;
+    padding: 5px 12px;
+    border-radius: 14px;
+    box-shadow: 0 0 10px rgba(233,30,99,0.45);
+}
+
+.main-nav ul li a.nav-active-category:hover {
+    color: #fff;
+    background: #c2185b;
 }
 
 .hero-banner { 
@@ -948,6 +939,40 @@ body {
     outline: none;
     border-color: #e91e63;
     box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.12);
+}
+
+.forgot-password-link {
+    display: block;
+    text-align: left;
+    font-size: 0.82rem;
+    color: #888;
+    text-decoration: none;
+    margin-top: -6px;
+    margin-bottom: 6px;
+    transition: color 0.2s ease;
+}
+
+.forgot-password-link:hover {
+    color: #e91e63;
+    text-decoration: underline;
+}
+
+.forgot-password-msg {
+    font-size: 0.82rem;
+    margin: -2px 0 6px;
+    min-height: 0;
+}
+
+.forgot-password-msg:empty {
+    margin: 0;
+}
+
+.forgot-password-msg.error {
+    color: #d9534f;
+}
+
+.forgot-password-msg.success {
+    color: #2e7d32;
 }
 
 .auth-submit-btn { 
@@ -1807,24 +1832,50 @@ body {
     stroke: #e91e63;
 }
 
-.ai-header-icon,
+@keyframes sparkPulse {
+    0%, 100% { filter: drop-shadow(0 0 2px rgba(255,200,0,0.4)) drop-shadow(0 0 5px rgba(255,215,0,0.3)); }
+    50% { filter: drop-shadow(0 0 4px rgba(255,200,0,0.65)) drop-shadow(0 0 9px rgba(255,215,0,0.5)); }
+}
+
 .booking-header-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
+    transition: opacity 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.booking-header-icon:hover {
+    opacity: 0.7;
+}
+
+.booking-header-icon svg {
+    stroke: #000000;
+}
+
+.ai-header-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
     color: #111;
     transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.ai-header-icon:hover,
-.booking-header-icon:hover {
-    color: #e91e63;
+.ai-header-icon svg {
+    animation: sparkPulse 2.4s ease-in-out infinite;
 }
 
-.ai-header-icon:hover svg,
-.booking-header-icon:hover svg {
-    stroke: #e91e63;
+.ai-header-icon:hover {
+    color: #e6b800;
+}
+
+.ai-header-icon:hover svg {
+    stroke: #e6b800;
+    filter: drop-shadow(0 0 6px rgba(255,200,0,0.85)) drop-shadow(0 0 13px rgba(255,215,0,0.7));
 }
 
 .wishlist-badge-container {
@@ -3938,6 +3989,7 @@ img, svg, video {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     margin-bottom: 14px;
 }
 
@@ -3946,6 +3998,7 @@ img, svg, video {
     border: none;
     width: 28px;
     height: 28px;
+    flex-shrink: 0;
     border-radius: 8px;
     color: #e91e63;
     font-size: 1rem;
@@ -3958,9 +4011,12 @@ img, svg, video {
 }
 
 .calendar-month-label {
-    font-size: 0.92rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: #333;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
 }
 
 .calendar-weekdays {
