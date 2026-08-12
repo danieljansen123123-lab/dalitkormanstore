@@ -663,7 +663,7 @@ const productsDB = {
         name: "קרם רטינואיד – Juliette Armand",
         brand: "Juliette Armand",
         price: 280,
-        img: "product-photos/ja-retinoid-cream.png",
+        img: "product-photos/2000_69b19caaaa933.webp",
         shortDesc: "קרם אנטיאייג' לחידוש, שיקום ומיצוק",
         volume: "50g",
         skinType: "עור בוגר / קמטים (מתאים גם לעיניים וצוואר)",
@@ -673,25 +673,11 @@ const productsDB = {
         ingredients: "נגזרות רטינואיד מתקדמות (HPR), רכיבי שיקום ומיצוק.",
         collection: "creams"
     },
-    49: {
-        name: "ריפיל קרם רטינואיד – Juliette Armand",
-        brand: "Juliette Armand",
-        price: 240,
-        img: "product-photos/ja-retinoid-cream-refill.png",
-        shortDesc: "מילוי לקרם רטינואיד אנטיאייג'",
-        volume: "50g",
-        skinType: "עור בוגר / קמטים",
-        usageRange: "שימוש יומיומי (בוקר וערב)",
-        longDesc: "אריזת מילוי (Refill) אקולוגית וחסכונית לקרם הרטינואיד של Juliette Armand. מיועדת להחלפת המכל הפנימי במארז הקיים, ומכילה את אותה הפורמולה המתקדמת לחידוש, שיקום, מיצוק והחלקת העור ללא גירוי.\n\nתומכת בחידוש העור, החלקת קמטוטים והענקת לחות וגמישות לאורך כל היממה.",
-        usage: "להחליף את המכל הפנימי במארז הקרם הקיים.",
-        ingredients: "נגזרות רטינואיד מתקדמות (HPR), רכיבי שיקום ומיצוק.",
-        collection: "creams"
-    },
     50: {
         name: "סרום 1% HPR – Juliette Armand",
         brand: "Juliette Armand",
         price: 210,
-        img: "product-photos/ja-retinoid-serum-1.png",
+        img: "product-photos/2000_69b189bc16228.webp",
         shortDesc: "חידוש מאסיבי בטכנולוגיית HPR",
         volume: "20ml",
         skinType: "פיגמנטציה / צלקות / נקבוביות מורחבות",
@@ -705,7 +691,7 @@ const productsDB = {
         name: "סרום 3% HPR – Juliette Armand",
         brand: "Juliette Armand",
         price: 240,
-        img: "product-photos/ja-retinoid-serum-3.png",
+        img: "product-photos/Retinoid_3_Serum_20ml-600x600.png",
         shortDesc: "סרום רטינואיד מרוכז לחידוש עוצמתי",
         volume: "20ml",
         skinType: "פיגמנטציה / צלקות עמוקות / מרקם לא אחיד",
@@ -719,7 +705,7 @@ const productsDB = {
         name: "קרם ריפר – Juliette Armand",
         brand: "Juliette Armand",
         price: 250,
-        img: "product-photos/ja-repair-cream.png",
+        img: "product-photos/2000_69b1993a4d13c.webp",
         shortDesc: "פרוביוטיקה לעור ושיקום מחסום אפידרמלי",
         volume: "50g",
         skinType: "עור פגום / רגיש / מבוגר",
@@ -729,25 +715,11 @@ const productsDB = {
         ingredients: "פרוביוטיקה, פפטידים, סרמידים, רכיבי שיקום.",
         collection: "creams"
     },
-    53: {
-        name: "ריפיל קרם ריפר – Juliette Armand",
-        brand: "Juliette Armand",
-        price: 200,
-        img: "product-photos/ja-repair-cream-refill.png",
-        shortDesc: "מילוי לקרם ריפר פרוביוטי",
-        volume: "50g",
-        skinType: "עור פגום / רגיש",
-        usageRange: "שימוש יומיומי",
-        longDesc: "אריזת מילוי (Refill) ירוקה וחסכונית לקרם ה-Repair המשקם של Juliette Armand. המילוי מכיל את הפורמולה העשירה בפרוביוטיקה, פפטידים וסרמידים לשיקום המחסום האפידרמלי ולהגנה על עור פגום או רגיש.\n\nמיועד להחלפה קלה במארז הקיים ושומר על תהליך טיפוח רציף, מעשיר ומגן לאורך זמן.",
-        usage: "להחליף את המכל הפנימי במארז הקרם הקיים.",
-        ingredients: "פרוביוטיקה, פפטידים, סרמידים.",
-        collection: "creams"
-    },
     54: {
         name: "סרום פוליק אסיד – Juliette Armand",
         brand: "Juliette Armand",
         price: 160,
-        img: "product-photos/ja-folic-acid-serum.png",
+        img: "product-photos/folicacids_b9_serumBIG-Edited.webp",
         shortDesc: "ויסות סבום, טיפול באקנה, עיניים ועור רגיש",
         volume: "20ml",
         skinType: "עור אקנתי / רגיש / נפיחויות בעיניים",
@@ -761,7 +733,7 @@ const productsDB = {
         name: "סרום קומפלקס B – Juliette Armand",
         brand: "Juliette Armand",
         price: 190,
-        img: "product-photos/ja-b-complex-serum.png",
+        img: "product-photos/vitaminbcomplexserumBIG-Edited.webp",
         shortDesc: "שיקום מחסום אפידרמלי לעור אדמומי ורוזציאה",
         volume: "20ml",
         skinType: "עור אדמומי / רגיש / רוזציאה",
@@ -775,7 +747,7 @@ const productsDB = {
         name: "קרם מולטי – Juliette Armand",
         brand: "Juliette Armand",
         price: 190,
-        img: "product-photos/ja-multi-cream.png",
+        img: "product-photos/2000_6a4ff8709e602.webp",
         shortDesc: "לחות קלילה לעור זוהר מועשרת בוויטמינים B ו-E",
         volume: "50g",
         skinType: "כל סוגי העור (מושלם לפני איפור)",
@@ -785,25 +757,11 @@ const productsDB = {
         ingredients: "חומצה היאלרונית בשני גדלים, ויטמין B, ויטמין E.",
         collection: "creams"
     },
-    57: {
-        name: "ריפיל קרם מולטי – Juliette Armand",
-        brand: "Juliette Armand",
-        price: 170,
-        img: "product-photos/ja-multi-cream-refill.png",
-        shortDesc: "מילוי לקרם מולטי קליל",
-        volume: "50g",
-        skinType: "כל סוגי העור",
-        usageRange: "שימוש יומיומי",
-        longDesc: "אריזת מילוי (Refill) נוחה וסביבתית לקרם המולטי מבית Juliette Armand. מכילה את הפורמולה הקלילה והמעשירה בחומצה היאלרונית בשני גדלים ובוויטמינים B ו-E.\n\nמספקת לחות רציפה, גמישות ומראה עור זוהר ומוכן לאיפור, תוך שמירה על המארז המקורי של הקרם.",
-        usage: "להחליף את המכל הפנימי במארז הקיים.",
-        ingredients: "חומצה היאלרונית, ויטמינים B ו-E.",
-        collection: "creams"
-    },
     58: {
         name: "סרום סירטואין היאלרונית – Juliette Armand",
         brand: "Juliette Armand",
         price: 190,
-        img: "product-photos/ja-sirtuin-hyaluronic-serum.png",
+        img: "product-photos/Sirtuin_Hyaluronic_Serum_20ml-600x600.webp",
         shortDesc: "חומצה היאלרונית בשלושה גדלים למיצוק ולחות",
         volume: "20ml",
         skinType: "כל סוגי העור / עור מיובש",
@@ -817,7 +775,7 @@ const productsDB = {
         name: "קרם קלריפיינג לאקנה – Clarifying Cream | Elements",
         brand: "Juliette Armand",
         price: 170,
-        img: "product-photos/ja-elements-clarifying-cream.webp",
+        img: "product-photos/Clarifying_Active_Cream_50ml-600x600.webp",
         shortDesc: "קרם לחות לעור עם נטייה לאקנה, מווסת ייצור שומן ומרגיע",
         volume: "50ml",
         skinType: "עור בעייתי ואקנתי",
@@ -831,7 +789,7 @@ const productsDB = {
         name: "מסכת קלריפיינג לאקנה – Clarifying Mask | Elements",
         brand: "Juliette Armand",
         price: 220,
-        img: "product-photos/ja-elements-clarifying-mask.webp",
+        img: "product-photos/Clarifying_Active_Mask_50ml-600x600-Edited.webp",
         shortDesc: "מסכה מטהרת לעור בעייתי ושומני, מנקה ומרגיעה",
         volume: "50g",
         skinType: "עור בעייתי ושומני",
@@ -845,7 +803,7 @@ const productsDB = {
         name: "קלריפיינג סטיק לטיפול נקודתי – Clarifying Stick | Elements",
         brand: "Juliette Armand",
         price: 140,
-        img: "product-photos/ja-elements-clarifying-stick.webp",
+        img: "product-photos/2000_69b1a5d6d8045.webp",
         shortDesc: "סטיק ריכוזי לטיפול נקודתי בפצעונים",
         volume: "8ml",
         skinType: "עור בעייתי ואקנתי",
@@ -859,7 +817,7 @@ const productsDB = {
         name: "קרם ברייטנינג להבהרת העור – Brightening Cream | Elements",
         brand: "Juliette Armand",
         price: 250,
-        img: "product-photos/ja-elements-brightening-cream.webp",
+        img: "product-photos/2000_69b19f3a1c5bd.webp",
         shortDesc: "קרם הבהרה ולחות, עדין ומתאים גם להריון והנקה",
         volume: "50ml",
         skinType: "כל סוגי העור, מומלץ לגוון עור לא אחיד",
@@ -873,7 +831,7 @@ const productsDB = {
         name: "סרום ברייטנינג להבהרת כתמים – Brightening Serum | Elements",
         brand: "Juliette Armand",
         price: 190,
-        img: "product-photos/ja-elements-brightening-serum.webp",
+        img: "product-photos/brightningserumBIG-Edited.webp",
         shortDesc: "סרום מרוכז לטיפול בכתמי פיגמנטציה ולגוון אחיד",
         volume: "20ml",
         skinType: "כל סוגי העור, מומלץ לגוון עור לא אחיד",
@@ -887,7 +845,7 @@ const productsDB = {
         name: "קרם קוויאר למראה צעיר – Caviar Cream | Elements",
         brand: "Juliette Armand",
         price: 280,
-        img: "product-photos/ja-elements-caviar-cream.webp",
+        img: "product-photos/2000_69b1a040a8161.webp",
         shortDesc: "קרם עשיר בתמצית קוויאר לחיזוק ולמיצוק העור",
         volume: "50g",
         skinType: "עור בוגר / עייף",
@@ -897,39 +855,25 @@ const productsDB = {
         ingredients: "תמצית קוויאר, חומצות אמינו.",
         collection: "creams"
     },
-    65: {
-        name: "ריפיל קרם קוויאר – Caviar Cream Refill | Elements",
-        brand: "Juliette Armand",
-        price: 240,
-        img: "product-photos/ja-elements-caviar-cream-refill.webp",
-        shortDesc: "מילוי חוזר (Refill) לקרם הקוויאר, אותה פורמולה עשירה",
-        volume: "50g",
-        skinType: "עור בוגר / עייף",
-        usageRange: "שימוש יומיומי (בוקר וערב)",
-        longDesc: "מילוי חוזר לקרם הקוויאר של סדרת Elements, באותה פורמולה עשירה בתמצית קוויאר וחומצות אמינו. אפשרות חסכונית וידידותית יותר לסביבה להמשך השימוש הקבוע בקרם האהוב.\n\nמתאים למי שכבר משתמש/ת באריזת קרם הקוויאר המקורית ומעוניין/ת במילוי חוזר.",
-        usage: "יש למרוח בבוקר ו/או בערב על עור נקי, לאחר סרומים.",
-        ingredients: "תמצית קוויאר, חומצות אמינו.",
-        collection: "creams"
-    },
     66: {
-        name: "קרם לחות והזנה עשיר עם קוויאר – Caviar Nourishing Cream | Elements",
+        name: "סרום לחות והזנה עשיר עם קוויאר – Caviar Nourishing Serum | Elements",
         brand: "Juliette Armand",
         price: 380,
-        img: "product-photos/ja-elements-caviar-nourishing-cream.webp",
-        shortDesc: "קרם לחות והזנה עשיר, מועשר בסרמידים וויטמינים D ו-E",
+        img: "product-photos/109599_Double-Caviar-Step-2-Serum.png",
+        shortDesc: "סרום לחות והזנה עשיר, מועשר בסרמידים וויטמינים D ו-E",
         volume: "55ml",
         skinType: "עור בוגר / יבש, כולל אזורים יבשים בפנים",
         usageRange: "שימוש יומיומי (בוקר וערב)",
-        longDesc: "קרם לחות והזנה עשיר בתמצית קוויאר, מועשר בסרמידים ובוויטמינים D ו-E התומכים בשיקום מחסום העור ההידרו-ליפידי. מרקם עשיר המתאים גם לאזורים יבשים יותר בפנים, ומעניק תחושת נוחות ולחות לאורך היום.\n\nמתאים במיוחד לעור בוגר הזקוק לתמיכה עשירה ומזינה.",
+        longDesc: "סרום לחות והזנה עשיר בתמצית קוויאר, מועשר בסרמידים ובוויטמינים D ו-E התומכים בשיקום מחסום העור ההידרו-ליפידי. מרקם עשיר המתאים גם לאזורים יבשים יותר בפנים, ומעניק תחושת נוחות ולחות לאורך היום.\n\nמתאים במיוחד לעור בוגר הזקוק לתמיכה עשירה ומזינה.",
         usage: "יש למרוח בבוקר ו/או בערב על עור נקי כשכבת טיפוח מרכזית.",
         ingredients: "תמצית קוויאר, סרמידים, ויטמין D, ויטמין E.",
-        collection: "creams"
+        collection: "serums"
     },
     67: {
-        name: "מסכת הזנה עשירה ללילה – Nourishing Night Mask | Elements",
+        name: "מסכת הזנה קוויאר עשירה לילה – Nourishing Caviar Night Mask | Elements",
         brand: "Juliette Armand",
         price: 320,
-        img: "product-photos/ja-elements-nourishing-mask.webp",
+        img: "product-photos/2000_69b1a25fb7c33.webp",
         shortDesc: "מסכת/קרם לילה עשיר, מחזק את מחסום העור ושומר על הלחות",
         volume: "50g",
         skinType: "עור יבש / עייף, מומלץ לחורף",
@@ -943,7 +887,7 @@ const productsDB = {
         name: "קרם רג'וונישן בוסטר – Rejuvenation Booster Cream",
         brand: "Juliette Armand",
         price: 320,
-        img: "product-photos/ja-booster-rejuvenation-cream.webp",
+        img: "product-photos/Apocalypsis_Rejuvenating_Cream_50ml-600x600.webp",
         shortDesc: "בוסט לחידוש ולמיצוק עור, עם תאי גזע צמחיים ופפטידים",
         volume: "50ml",
         skinType: "עור מיצוק ובוגר",
@@ -957,7 +901,7 @@ const productsDB = {
         name: "קרם עיניים בוסטר – Eye Booster Cream",
         brand: "Juliette Armand",
         price: 280,
-        img: "product-photos/ja-booster-eye-cream.webp",
+        img: "product-photos/Opsis_Eye_Cream_10ml-600x600.png",
         shortDesc: "בוסט אינטנסיבי לאזור העיניים - שקיות, נפיחות ועיגולים שחורים",
         volume: "10ml",
         skinType: "כל סוגי העור, אזור העיניים",
@@ -971,7 +915,7 @@ const productsDB = {
         name: "קרם קלמינג בליס – Calming Bliss Cream | Amson",
         brand: "Juliette Armand",
         price: 300,
-        img: "product-photos/ja-amson-calming-bliss-cream.webp",
+        img: "product-photos/109599_JA-AMES-CALM-50.png",
         shortDesc: "קרם הרגעה אינטנסיבי לעור רגיש ומגורה",
         volume: "50ml",
         skinType: "עור רגיש ומגורה",
@@ -985,7 +929,7 @@ const productsDB = {
         name: "סרום PDRN רג'ובנישן – PDRN Rejuvenation Serum | Amson",
         brand: "Juliette Armand",
         price: 340,
-        img: "product-photos/ja-amson-pdrn-serum.webp",
+        img: "product-photos/PDRN-Rejuvenation-Serum-30ml-2-1-600x600.webp",
         shortDesc: "סרום עוצמתי בטכנולוגיית PDRN לחידוש ולשיפור מראה העור",
         volume: "30ml",
         skinType: "כל סוגי העור, מומלץ לעור עייף וחסר זוהר",
@@ -999,7 +943,7 @@ const productsDB = {
         name: "קרם DNA RNA – DNA RNA Cream | Amson",
         brand: "Juliette Armand",
         price: 320,
-        img: "product-photos/ja-amson-dna-rna-cream.webp",
+        img: "product-photos/DNA-RNA-Rejuvenation-Cream-50ml-2-600x600.webp",
         shortDesc: "קרם לחידוש העור וחיזוק מחסום העור, מכיל חומצה היאלורונית",
         volume: "50ml",
         skinType: "כל סוגי העור",
@@ -1013,7 +957,7 @@ const productsDB = {
         name: "מקדם הגנה מינרלי Sunfilm Face Mineral Fluid SPF50",
         brand: "Juliette Armand",
         price: 220,
-        img: "product-photos/ja-sunfilm-mineral-fluid-spf50.webp",
+        img: "product-photos/109599_JA-SUN-MIN50-40.png",
         shortDesc: "מקדם הגנה מינרלי במרקם קליל, ללא צבע וללא ריח",
         volume: "40ml",
         skinType: "כל סוגי העור, כולל עור רגיש",
@@ -1027,7 +971,7 @@ const productsDB = {
         name: "מקדם הגנה בג'ל Sunfilm Face Gel SPF30",
         brand: "Juliette Armand",
         price: 180,
-        img: "product-photos/ja-sunfilm-face-gel-spf30.webp",
+        img: "product-photos/Face_Gel_SPF_30_55ml-600x600.png",
         shortDesc: "מקדם הגנה במרקם ג'ל קליל, מעניק זוהר וגוון עדין",
         volume: "55ml",
         skinType: "כל סוגי העור, מומלץ לעור שומני ומעורב",
@@ -1447,7 +1391,7 @@ function createProductCardHTML(p) {
                 ${typeof ICONS !== 'undefined' && ICONS.wishlist ? ICONS.wishlist : '♡'}
             </button>
             <div class="product-image-container">
-                <img loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
+                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
             </div>
             <div class="product-info">
                 <span class="brand-tag">${p.brand || ''}</span>
@@ -1489,7 +1433,7 @@ function createFeaturedProductCardHTML(p) {
 
             <div class="card-main-content">
                 <div class="product-image-container">
-                    <img loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
+                    <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
                 </div>
                 <div class="product-info">
                     <span class="brand-tag">${p.brand || ''}</span>
@@ -2013,7 +1957,7 @@ function renderCart() {
                     </div>
                 </div>
 
-                <img loading="lazy" src="${item.img || p.img}" style="width: 45px; height: 45px; object-fit: contain;">
+                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${item.img || p.img}" style="width: 45px; height: 45px; object-fit: contain;">
             </div>
         `;
     });
@@ -2338,6 +2282,22 @@ window.currentFilters = { category: 'all', brand: 'all' };
     if (params.get('brand')) window.currentFilters.brand = params.get('brand');
 })();
 
+// --- הדגשת קטגוריה פעילה בתפריט הניווט, לפי פרמטר ה-category בכתובת הנוכחית ---
+(function highlightActiveNavCategory() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const activeCategory = new URLSearchParams(window.location.search).get('category');
+
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const [linkPage, linkQuery] = href.split('?');
+        const linkCategory = new URLSearchParams(linkQuery || '').get('category');
+
+        if (currentPage === 'all-products.html' && linkPage === 'all-products.html' && activeCategory && linkCategory === activeCategory) {
+            link.classList.add('nav-active-category');
+        }
+    });
+})();
+
 window.getFilteredProducts = function(list) {
     return (list || []).filter(p => {
         const categoryOk = window.currentFilters.category === 'all' || p.collection === window.currentFilters.category;
@@ -2434,7 +2394,7 @@ window.handleAutocomplete = function(e) {
     } else {
         dropdown.innerHTML = matches.slice(0, 8).map(p => `
             <a href="product.html?id=${p.id}" class="autocomplete-item">
-                <img loading="lazy" src="${p.img}" alt="${p.name}" class="autocomplete-img">
+                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${p.img}" alt="${p.name}" class="autocomplete-img">
                 <div class="autocomplete-info">
                     <span class="autocomplete-name">${p.name}</span>
                     <span class="autocomplete-price">₪${p.price.toFixed(2)}</span>
@@ -2612,7 +2572,7 @@ function renderWishlistItems() {
 
         container.innerHTML += `
             <div class="wishlist-item">
-                <img loading="lazy" src="${product.img}" alt="${product.name}" class="wishlist-item-img">
+                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${product.img}" alt="${product.name}" class="wishlist-item-img">
                 <div class="wishlist-item-info">
                     <div class="wishlist-item-title">${product.name}</div>
                     <span class="wishlist-item-price">₪${product.price}</span>
@@ -2736,7 +2696,7 @@ window.renderCheckoutSummary = function() {
 
         container.innerHTML += `
             <div class="checkout-item">
-                <img loading="lazy" src="${product.img}" alt="${product.name}">
+                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${product.img}" alt="${product.name}">
                 <div class="checkout-item-details">
                     <div class="checkout-item-title">${product.name}</div>
                     <div class="checkout-item-price-qty">${item.quantity} יח' x ₪${product.price}</div>
@@ -3255,7 +3215,7 @@ window.createProductCardHTML = function(p) {
                 ${typeof ICONS !== 'undefined' && ICONS.wishlist ? ICONS.wishlist : '♡'}
             </button>
             <div class="product-image-container">
-                <img loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
+                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
             </div>
             
             <div class="product-info" style="padding-bottom: 15px;">
@@ -3307,7 +3267,7 @@ window.createFeaturedProductCardHTML = function(p) {
 
             <div class="card-main-content">
                 <div class="product-image-container">
-                    <img loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
+                    <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
                 </div>
                 
                 <div class="product-info" style="padding-bottom: 15px;">
@@ -3789,7 +3749,7 @@ window.updateCartUI = function() {
         const itemEl = document.createElement('div');
         itemEl.style.cssText = 'display:flex; align-items:center; gap:10px; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;';
         itemEl.innerHTML = `
-            ${item.img ? `<img loading="lazy" src="${item.img}" alt="${item.name}" style="width:50px; height:50px; object-fit:cover; border-radius:5px;">` : ''}
+            ${item.img ? `<img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${item.img}" alt="${item.name}" style="width:50px; height:50px; object-fit:cover; border-radius:5px;">` : ''}
             <div style="flex:1;">
                 <div style="font-size:0.85rem; font-weight:bold;">${item.name}</div>
                 ${priceDisplayHtml}
