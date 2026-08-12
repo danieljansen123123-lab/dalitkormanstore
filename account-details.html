@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פרטי החשבון - DALIT KORMAN</title>
+    <title>DALIT KORMAN</title>
+    <link rel="icon" type="image/png" href="product-photos/dalitkormanicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -34,6 +35,19 @@
                 <div id="search-dropdown" class="search-dropdown"></div>
             </div>
             <div class="header-actions">
+                <div class="ai-header-icon" onclick="handleAiIconClick()" title="יועצת טיפוח AI">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"></path>
+                    </svg>
+                </div>
+                <div class="booking-header-icon" onclick="handleBookingIconClick()" title="קביעת תור">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
                                             <a href="track-order.html" class="track-order-icon" title="מעקב אחר הזמנה">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -76,11 +90,10 @@
         <ul>
             <li><a href="index.html">דף הבית</a></li>
             <li><a href="all-products.html">כל המוצרים</a></li>
-            <li><a href="#">טיפוח פנים</a></li>
-            <li><a href="#">סרומים</a></li>
-            <li><a href="#">קרם לחות</a></li>
-            <li><a href="#">ניקוי פנים</a></li>
-            <li><a href="#">מסכות</a></li>
+            <li><a href="all-products.html?category=serums">סרומים</a></li>
+            <li><a href="all-products.html?category=creams">קרם לחות</a></li>
+            <li><a href="all-products.html?category=cleansers-peels">ניקוי פנים</a></li>
+            <li><a href="all-products.html?category=masks">מסכות</a></li>
         </ul>
     </nav>
 
@@ -246,6 +259,8 @@
             <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
                 <input type="email" id="login-email" placeholder="אימייל" required>
                 <input type="password" id="login-password" placeholder="סיסמה" required>
+                <a href="#" class="forgot-password-link" onclick="handleForgotPassword(); return false;">שכחת סיסמה?</a>
+                <p id="forgot-password-msg" class="forgot-password-msg"></p>
                 <button type="submit" class="auth-submit-btn">היכנס לחשבון</button>
             </form>
 
@@ -260,6 +275,23 @@
                 <input type="tel" id="reg-phone" placeholder="מספר טלפון" required>
                 <div id="phone-rules" class="field-rules-container">
                     <div id="rule-phone-format" class="rule invalid">✖ מספר נייד תקין להתקשרות (למשל: 0501234567)</div>
+                </div>
+                <div class="gender-select-group">
+                    <label class="gender-select-label">מגדר</label>
+                    <div class="gender-options">
+                        <label class="gender-option">
+                            <input type="radio" name="reg-gender" value="אישה" required>
+                            <span>אישה</span>
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="reg-gender" value="גבר" required>
+                            <span>גבר</span>
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="reg-gender" value="אחר" required>
+                            <span>אחר</span>
+                        </label>
+                    </div>
                 </div>
 
                 <input type="password" id="reg-password" placeholder="סיסמה" required>
