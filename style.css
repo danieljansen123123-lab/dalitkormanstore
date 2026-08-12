@@ -4182,9 +4182,13 @@ img, svg, video {
 @media (max-width: 900px) {
     .booking-layout {
         flex-direction: column;
+        align-items: stretch;
     }
     .my-appointments-card {
         position: static;
+        width: 100%;
+    }
+    .booking-form-card {
         width: 100%;
     }
     .progress-step-label {
