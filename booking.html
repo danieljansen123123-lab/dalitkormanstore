@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>קביעת תור - DALIT KORMAN</title>
+    <title>DALIT KORMAN</title>
+    <link rel="icon" type="image/png" href="product-photos/dalitkormanicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -86,7 +87,6 @@
         <ul>
             <li><a href="index.html">דף הבית</a></li>
             <li><a href="all-products.html">כל המוצרים</a></li>
-            <li><a href="all-products.html">טיפוח פנים</a></li>
             <li><a href="all-products.html?category=serums">סרומים</a></li>
             <li><a href="all-products.html?category=creams">קרם לחות</a></li>
             <li><a href="all-products.html?category=cleansers-peels">ניקוי פנים</a></li>
@@ -106,6 +106,8 @@
             <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
                 <input type="email" id="login-email" placeholder="אימייל" required>
                 <input type="password" id="login-password" placeholder="סיסמה" required>
+                <a href="#" class="forgot-password-link" onclick="handleForgotPassword(); return false;">שכחת סיסמה?</a>
+                <p id="forgot-password-msg" class="forgot-password-msg"></p>
                 <button type="submit" class="auth-submit-btn">היכנס לחשבון</button>
             </form>
 
@@ -401,9 +403,10 @@
             const outgoingEl = document.getElementById(STEP_IDS[currentStepNum - 1]);
             const incomingEl = document.getElementById(STEP_IDS[targetStepNum - 1]);
             const viewport = document.querySelector('.booking-step-viewport');
+            const outgoingWasVisible = outgoingEl.style.display !== 'none';
 
             // Measure both heights before anything moves, then lock to the taller one
-            const outgoingHeight = outgoingEl.offsetHeight;
+            const outgoingHeight = outgoingWasVisible ? outgoingEl.offsetHeight : 0;
             incomingEl.style.display = 'block';
             incomingEl.style.visibility = 'hidden';
             const incomingHeight = incomingEl.offsetHeight;
@@ -413,19 +416,31 @@
             const outAnimClass = direction === 'forward' ? 'anim-out-right' : 'anim-out-left';
             const inAnimClass = direction === 'forward' ? 'anim-in-left' : 'anim-in-right';
 
-            outgoingEl.classList.add(outAnimClass);
-            const onOutEnd = () => {
+            if (outgoingWasVisible) {
+                outgoingEl.classList.add(outAnimClass);
+                const onOutEnd = () => {
+                    outgoingEl.style.display = 'none';
+                    outgoingEl.classList.remove(outAnimClass);
+                    outgoingEl.removeEventListener('animationend', onOutEnd);
+                    if (viewport) viewport.style.minHeight = ''; // release the lock once settled
+                };
+                outgoingEl.addEventListener('animationend', onOutEnd);
+            } else {
+                // Nothing visible to animate out (e.g. jumping in from the
+                // success screen) - just make sure it stays hidden.
                 outgoingEl.style.display = 'none';
-                outgoingEl.classList.remove(outAnimClass);
-                outgoingEl.removeEventListener('animationend', onOutEnd);
-                if (viewport) viewport.style.minHeight = ''; // release the lock once settled
-            };
-            outgoingEl.addEventListener('animationend', onOutEnd);
+            }
 
             incomingEl.classList.add(inAnimClass);
             const onInEnd = () => {
                 incomingEl.classList.remove(inAnimClass);
                 incomingEl.removeEventListener('animationend', onInEnd);
+                // Guaranteed fallback release: if the outgoing side never
+                // animated (so never released the lock itself), release it
+                // here instead - this is what makes the lock impossible to
+                // get permanently stuck, regardless of which state this
+                // transition started from.
+                if (!outgoingWasVisible && viewport) viewport.style.minHeight = '';
             };
             incomingEl.addEventListener('animationend', onInEnd);
 
@@ -764,8 +779,13 @@
 
             resetCalendarSelection();
             selectedTimeReset();
-            currentStepNum = 1; // so transitionToStep(2) reads as "forward"
-            document.getElementById(STEP_IDS[0]).style.display = 'none';
+
+            // If we're coming from the success screen, its step element is
+            // already hidden without currentStepNum reflecting that - make
+            // sure the actual DOM matches currentStepNum before transitioning.
+            document.getElementById('booking-success-box').style.display = 'none';
+            document.getElementById('booking-progress-stepper').style.display = 'flex';
+
             transitionToStep(2);
 
             document.getElementById('booking-form-card') && document.querySelector('.booking-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
