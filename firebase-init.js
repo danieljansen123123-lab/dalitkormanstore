@@ -215,6 +215,36 @@ window.handlePasswordReset = async function() {
     }
 };
 
+// "שכחת סיסמה?" בטופס ההתחברות - למשתמשת שאינה מחוברת ולכן לא יכולה
+// להשתמש ב-handlePasswordReset למעלה (שדורש session פעיל). משתמשת
+// בכתובת שכבר הוקלדה בטופס ההתחברות עצמו.
+window.handleForgotPassword = async function() {
+    const emailInput = document.getElementById('login-email');
+    const email = emailInput ? emailInput.value.trim() : '';
+    const msgEl = document.getElementById('forgot-password-msg');
+
+    if (!msgEl) return;
+
+    if (!email) {
+        msgEl.className = 'forgot-password-msg error';
+        msgEl.innerText = "נא להזין קודם את כתובת האימייל שלך בשדה שלמעלה, ואז ללחוץ שוב על \u2018שכחת סיסמה?\u2019.";
+        return;
+    }
+
+    msgEl.className = 'forgot-password-msg';
+    msgEl.innerText = "שולחת...";
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+        msgEl.className = 'forgot-password-msg success';
+        msgEl.innerText = "נשלח אימייל לאיפוס סיסמה. בדקי את תיבת הדואר שלך (כולל תיקיית ספאם).";
+    } catch (error) {
+        console.error("שגיאה בשליחת אימייל איפוס סיסמה:", error);
+        msgEl.className = 'forgot-password-msg error';
+        msgEl.innerText = "לא הצלחנו לשלוח אימייל. ודאי שהכתובת נכונה ונסי שוב.";
+    }
+};
+
 // חישוב ברכה לפי שעה
 function getGreeting() {
     const hour = new Date().getHours();
@@ -387,6 +417,16 @@ window.executeAccountDeletion = async function() {
     deleteBtn.disabled = true;
 
     try {
+        // מחיקת כל התורים ששייכים לחשבון הזה, לפני מחיקת החשבון עצמו - כדי
+        // שלא יישארו תורים "יתומים" ששייכים למשתמש שכבר לא קיים
+        const appointmentsQuery = query(collection(db, 'Appointments'), where('userId', '==', user.uid));
+        const appointmentsSnap = await getDocs(appointmentsQuery);
+        if (!appointmentsSnap.empty) {
+            const batch = writeBatch(db);
+            appointmentsSnap.forEach(docSnap => batch.delete(docSnap.ref));
+            await batch.commit();
+        }
+
         // מחיקה מ-Firestore
         await deleteDoc(doc(db, "Users", user.uid));
 
