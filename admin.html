@@ -1007,9 +1007,9 @@
                 <p class="admin-page-subtitle">כל הטיפולים המתוכננים ליום נבחר, בציר זמן.</p>
 
                 <div class="timeline-toolbar">
-                    <button class="timeline-nav-btn" onclick="changeTimelineDate(-1)" aria-label="יום קודם">←</button>
+                    <button class="timeline-nav-btn" onclick="changeTimelineDate(-1)" aria-label="יום קודם">→</button>
                     <span id="timeline-date-label"></span>
-                    <button class="timeline-nav-btn" onclick="changeTimelineDate(1)" aria-label="יום הבא">→</button>
+                    <button class="timeline-nav-btn" onclick="changeTimelineDate(1)" aria-label="יום הבא">←</button>
                     <input type="date" id="timeline-date-input" onchange="onTimelineDateInputChange()">
                     <button class="timeline-today-btn" onclick="goToTimelineToday()">היום</button>
                 </div>
@@ -1860,9 +1860,26 @@
 
         async function openCustomerProfile(uid) {
             currentCrmCustomerUid = uid;
-            let customer = crmCustomersCache.find(c => c.uid === uid);
+
+            // Always fetch a fresh copy of this specific customer directly,
+            // rather than relying solely on the list cache - skinType gets
+            // updated by the AI skin analysis at any time, independent of
+            // when the CRM list was last loaded, so the cache alone could
+            // show stale data here.
+            let customer;
+            try {
+                const freshDoc = await window.getDoc(window.doc(window.db, 'Users', uid));
+                if (freshDoc.exists()) {
+                    customer = { uid, ...freshDoc.data() };
+                    const idx = crmCustomersCache.findIndex(c => c.uid === uid);
+                    if (idx !== -1) crmCustomersCache[idx] = customer;
+                    else crmCustomersCache.push(customer);
+                }
+            } catch (err) {
+                console.error('שגיאה בטעינת פרופיל עדכני:', err);
+            }
+
             if (!customer) {
-                await loadCrmCustomers();
                 customer = crmCustomersCache.find(c => c.uid === uid);
                 if (!customer) return;
             }
@@ -2004,7 +2021,7 @@
         // TIMELINE LOGIC
         // =========================================
         let currentTimelineDate = null;
-        const TIMELINE_PIXELS_PER_HOUR = 64;
+        const TIMELINE_PIXELS_PER_HOUR = 100;
 
         function goToTimelineToday() {
             currentTimelineDate = window.formatDateLocal(new Date());
@@ -2077,13 +2094,20 @@
                 const [h, m] = (a.time || '00:00').split(':').map(Number);
                 const startMinutesFromOpen = (h - openH) * 60 + m;
                 const top = (startMinutesFromOpen / 60) * TIMELINE_PIXELS_PER_HOUR;
-                const height = ((a.durationMinutes || 30) / 60) * TIMELINE_PIXELS_PER_HOUR;
+                const blockHeight = Math.max(((a.durationMinutes || 30) / 60) * TIMELINE_PIXELS_PER_HOUR, 30);
+
+                // Only include each line if the block is actually tall enough
+                // to show it without clipping - guarantees nothing gets cut
+                // off, regardless of how short the appointment is, instead of
+                // assuming a fixed layout will always have room.
+                const showTreatment = blockHeight >= 36;
+                const showCustomer = blockHeight >= 48;
 
                 appointmentsHtml += `
-                    <div class="timeline-appointment-block" style="top: ${top}px; height: ${Math.max(height, 26)}px;" onclick='showAppointmentPopover(event, ${JSON.stringify({ userId: a.userId, userName: a.userName })})'>
-                        <div class="timeline-appt-time">${a.time}</div>
-                        <div class="timeline-appt-treatment">${a.treatmentName}</div>
-                        <div class="timeline-appt-customer">${a.userName || ''}</div>
+                    <div class="timeline-appointment-block" style="top: ${top}px; height: ${blockHeight}px;" onclick='showAppointmentPopover(event, ${JSON.stringify({ userId: a.userId, userName: a.userName })})'>
+                        <div class="timeline-appt-time">${a.time}${!showTreatment ? ' · ' + a.treatmentName : ''}</div>
+                        ${showTreatment ? `<div class="timeline-appt-treatment">${a.treatmentName}</div>` : ''}
+                        ${showCustomer ? `<div class="timeline-appt-customer">${a.userName || ''}</div>` : ''}
                     </div>`;
             });
 
