@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ההזמנות שלי - DALIT KORMAN</title>
+    <title>DALIT KORMAN</title>
+    <link rel="icon" type="image/png" href="product-photos/dalitkormanicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -89,7 +90,6 @@
         <ul>
             <li><a href="index.html">דף הבית</a></li>
             <li><a href="all-products.html">כל המוצרים</a></li>
-            <li><a href="all-products.html">טיפוח פנים</a></li>
             <li><a href="all-products.html?category=serums">סרומים</a></li>
             <li><a href="all-products.html?category=creams">קרם לחות</a></li>
             <li><a href="all-products.html?category=cleansers-peels">ניקוי פנים</a></li>
@@ -109,8 +109,6 @@
                 <a href="account.html" style="text-decoration: none; color: #e91e63; font-size: 1.1rem; border-bottom: 2px solid #e91e63; padding-bottom: 10px; margin-bottom: -12px; font-weight: bold;">ההזמנות שלי</a>
                 
                 <a href="account-details.html" style="text-decoration: none; color: #888; font-size: 1.1rem; padding-bottom: 10px; margin-bottom: -12px; transition: 0.3s;">פרטי החשבון</a>
-                
-                <a href="ai-consultant.html" style="text-decoration: none; color: #888; font-size: 1.1rem; padding-bottom: 10px; margin-bottom: -12px; transition: 0.3s;">יועצת טיפוח AI</a>
                 
                 <button onclick="handleLogout()" style="margin-right: auto; background: none; border: 1px solid #ccc; padding: 5px 15px; border-radius: 5px; cursor: pointer; color: #555; transition: 0.2s;">התנתק</button>
             </div>
@@ -447,6 +445,8 @@
             <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
                 <input type="email" id="login-email" placeholder="אימייל" required>
                 <input type="password" id="login-password" placeholder="סיסמה" required>
+                <a href="#" class="forgot-password-link" onclick="handleForgotPassword(); return false;">שכחת סיסמה?</a>
+                <p id="forgot-password-msg" class="forgot-password-msg"></p>
                 <button type="submit" class="auth-submit-btn">היכנס לחשבון</button>
             </form>
 
