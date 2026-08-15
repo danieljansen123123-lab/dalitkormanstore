@@ -108,6 +108,17 @@
             margin-top: 10px;
         }
 
+        .checkout-account-note {
+            background-color: #fdf2f6;
+            border: 1px solid #fce4ec;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 0.85rem;
+            color: #555555;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
         .btn-submit-order {
             width: 100%;
             background-color: #e91e63;
@@ -161,7 +172,7 @@
 
     <main class="checkout-wrapper">
         <div class="checkout-card">
-            <h2 class="card-title">פרטי משלוח ויצירת קשר</h2>
+            <h2 class="card-title" id="checkout-card-title">פרטי משלוח ויצירת קשר</h2>
             <form id="checkout-form" onsubmit="window.submitOrder(event)">
                 <div class="form-group">
                     <label for="checkout-name">שם מלא *</label>
@@ -175,7 +186,41 @@
                     <label for="checkout-phone">מספר טלפון *</label>
                     <input type="tel" id="checkout-phone" name="phone" autocomplete="tel" required placeholder="050-0000000">
                 </div>
-                
+
+                <div id="checkout-account-fields" style="display:none;">
+                    <p class="checkout-account-note">לא מצאנו אצלנו חשבון פעיל - נשמח ליצור לך אחד יחד עם ההזמנה, כך שבפעם הבאה תוכלי לעקוב אחרי הזמנות ותורים בקלות.</p>
+                    <div class="form-group">
+                        <label for="checkout-password">סיסמה *</label>
+                        <input type="password" id="checkout-password" autocomplete="new-password" placeholder="לפחות 6 תווים, אות גדולה וסמל">
+                        <div id="checkout-password-rules" class="field-rules-container">
+                            <div id="checkout-rule-pass-length" class="rule invalid">✖ לפחות 6 תווים</div>
+                            <div id="checkout-rule-pass-capital" class="rule invalid">✖ לפחות אות אנגלית גדולה אחת (A-Z)</div>
+                            <div id="checkout-rule-pass-symbol" class="rule invalid">✖ לפחות סמל מיוחד אחד (!@#$%^&*)</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>מגדר *</label>
+                        <div class="gender-options">
+                            <label class="gender-option">
+                                <input type="radio" name="checkout-gender" value="אישה">
+                                <span>אישה</span>
+                            </label>
+                            <label class="gender-option">
+                                <input type="radio" name="checkout-gender" value="גבר">
+                                <span>גבר</span>
+                            </label>
+                            <label class="gender-option">
+                                <input type="radio" name="checkout-gender" value="אחר">
+                                <span>אחר</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-dob">תאריך לידה *</label>
+                        <input type="date" id="checkout-dob">
+                    </div>
+                </div>
+
                 <button type="submit" id="submit-order-btn" class="btn-submit-order">
                     אישור וביצוע הזמנה
                 </button>
@@ -279,9 +324,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ברגע שהם מגיעים בפועל, מרעננים את סיכום הקופה כדי שהמחיר יהיה תמיד נכון ועדכני.
     document.addEventListener('shopSalesLoaded', renderCheckoutSummary);
 
-    // מילוי אוטומטי של פרטי משתמש
+    // מילוי אוטומטי של פרטי משתמש (מחוברת), או חשיפת שדות יצירת חשבון (לא מחוברת)
     if (window.auth) {
         window.auth.onAuthStateChanged(async (user) => {
+            const accountFieldsBlock = document.getElementById('checkout-account-fields');
+            const titleElem = document.getElementById('checkout-card-title');
+            const submitBtn = document.getElementById('submit-order-btn');
+            const passwordInput = document.getElementById('checkout-password');
+            const dobInput = document.getElementById('checkout-dob');
+
             if (user) {
                 const nameInput = document.getElementById('checkout-name');
                 const emailInput = document.getElementById('checkout-email');
@@ -303,7 +354,48 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log('Error fetching user:', e);
                     }
                 }
+            } else {
+                // לא מחוברת - חושפים את שדות יצירת החשבון ומסמנים אותם כחובה,
+                // כדי שהתקנת הטופס הטבעית של הדפדפן תאכוף אותם.
+                if (accountFieldsBlock) accountFieldsBlock.style.display = 'block';
+                if (titleElem) titleElem.innerText = 'פרטי משלוח ויצירת חשבון';
+                if (submitBtn) submitBtn.innerText = 'יצירת חשבון וביצוע הזמנה';
+                if (passwordInput) passwordInput.setAttribute('required', 'required');
+                if (dobInput) dobInput.setAttribute('required', 'required');
+                document.querySelectorAll('input[name="checkout-gender"]').forEach(el => el.setAttribute('required', 'required'));
             }
+        });
+    }
+
+    // --- Live Password Validation (same rules as the signup form) ---
+    const checkoutPassword = document.getElementById('checkout-password');
+    const checkoutPasswordRules = document.getElementById('checkout-password-rules');
+    if (checkoutPassword) {
+        checkoutPassword.addEventListener('focus', () => {
+            if (checkoutPasswordRules) checkoutPasswordRules.classList.add('visible');
+        });
+        checkoutPassword.addEventListener('blur', () => {
+            if (checkoutPasswordRules && !checkoutPassword.value.trim()) {
+                checkoutPasswordRules.classList.remove('visible');
+            }
+        });
+        checkoutPassword.addEventListener('input', (e) => {
+            const val = e.target.value;
+
+            const ruleLength = document.getElementById('checkout-rule-pass-length');
+            const isLengthValid = val.length >= 6;
+            ruleLength.className = isLengthValid ? 'rule valid' : 'rule invalid';
+            ruleLength.innerText = isLengthValid ? '✔ לפחות 6 תווים' : '✖ לפחות 6 תווים';
+
+            const ruleCapital = document.getElementById('checkout-rule-pass-capital');
+            const hasCapital = /[A-Z]/.test(val);
+            ruleCapital.className = hasCapital ? 'rule valid' : 'rule invalid';
+            ruleCapital.innerText = hasCapital ? '✔ לפחות אות אנגלית גדולה אחת (A-Z)' : '✖ לפחות אות אנגלית גדולה אחת (A-Z)';
+
+            const ruleSymbol = document.getElementById('checkout-rule-pass-symbol');
+            const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(val);
+            ruleSymbol.className = hasSymbol ? 'rule valid' : 'rule invalid';
+            ruleSymbol.innerText = hasSymbol ? '✔ לפחות סמל מיוחד אחד (!@#$%^&*)' : '✖ לפחות סמל מיוחד אחד (!@#$%^&*)';
         });
     }
 });
