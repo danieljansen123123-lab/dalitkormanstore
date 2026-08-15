@@ -737,6 +737,13 @@ body {
 .product-subtitle { color: #555; margin-bottom: 15px; line-height: 1.5; font-size: 1rem; }
 .price-box { margin-bottom: 25px; }
 .current-price-large { font-size: 2.2rem; font-weight: bold; color: #e91e63; }
+
+.refill-price-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: -18px;
+    margin-bottom: 25px;
+}
 .purchase-actions-row { display: flex; gap: 15px; align-items: center; margin-bottom: 30px; }
 .quantity-selector { display: flex; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
 .quantity-selector button { width: 35px; height: 45px; background: #f5f5f5; border: none; cursor: pointer; font-size: 1.2rem; }
@@ -2919,6 +2926,8 @@ img, svg, video {
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none; /* Firefox */
+    aspect-ratio: 1 / 1; /* fixed and stable - never changes between photos, so scrolling doesn't shift the page around it */
+    background-color: #f5f0ec; /* shows through as soft letterboxing behind photos that don't fill the square exactly, instead of cropping them */
 }
 .results-track-wrapper::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
@@ -2934,14 +2943,14 @@ img, svg, video {
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
+    height: 100%;
 }
 
 .result-img {
     flex: 0 0 100%;
     width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3; /* Forces the perfect landscape ratio for before/afters */
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain; /* shows each photo in full, uncropped, within the fixed square - portrait and landscape photos both fit without losing content */
     display: block;
     border-radius: 8px;
     scroll-snap-align: start;
@@ -3061,12 +3070,6 @@ img, svg, video {
     border-top: 1px solid #f0ebe6;
     padding-top: 12px;
     margin-top: auto;
-}
-
-@media (max-width: 640px) {
-    .reviews-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* ==========================================
