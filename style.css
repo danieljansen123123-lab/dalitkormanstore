@@ -735,8 +735,30 @@ body {
 .brand-tag#page-brand { font-size: 1.1rem; color: #888; font-weight: bold; margin-bottom: 5px; display: block; }
 .product-title { font-size: 1.8rem; margin-bottom: 8px; color: #222; }
 .product-subtitle { color: #555; margin-bottom: 15px; line-height: 1.5; font-size: 1rem; }
-.price-box { margin-bottom: 25px; }
+.price-box {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+}
 .current-price-large { font-size: 2.2rem; font-weight: bold; color: #e91e63; }
+
+.original-price-strikethrough {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.3rem;
+}
+
+.sale-badge-inline {
+    background: #e91e63;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.25);
+}
 
 .refill-price-note {
     font-size: 0.85rem;
@@ -1255,6 +1277,22 @@ body {
     background: #fdf2f6;
     color: #e91e63;
     font-weight: 700;
+}
+
+.dob-field-group {
+    margin-bottom: 14px;
+}
+
+.dob-field-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.dob-field-group input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .gender-option:hover span {
@@ -2209,29 +2247,9 @@ body {
 }
 
 /* --- ACCORDION EXPANDABLE CONTENT AREA --- */
-/* Update this selector in style.css */
-.card-expand-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    /* NEW, SLOWER TRANSITION VALUES: */
-    transition: max-height 0.7s ease, opacity 0.5s ease, margin-top 0.5s ease, padding-top 0.5s ease;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: 1px solid transparent;
-}
-
-.product-card.expanded {
-    box-shadow: 0 12px 28px rgba(233, 30, 99, 0.22);
-}
-
-.product-card.expanded .card-expand-content {
-    max-height: 240px;
-    opacity: 1;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #fce4ec;
-}
+/* Actual expand/collapse rules now live further down, keyed off the
+   .expanded class that toggleCardExpand() manages in JS - see the
+   .product-card.expanded / .featured-product-card.expanded rules. */
 
 .expand-desc {
     font-size: 0.82rem;
@@ -2239,6 +2257,7 @@ body {
     line-height: 1.4;
     margin-bottom: 12px;
     text-align: center;
+    min-height: 2.8em; /* keeps cards in the same row roughly aligned regardless of each product's description length */
 }
 
 .expand-actions {
@@ -2459,11 +2478,6 @@ img, svg, video {
         max-width: 100%;
     }
 
-    /* Expanded Card Mobile Layout */
-    .product-card.expanded .card-expand-content {
-        max-height: 300px;
-    }
-
     .expand-actions {
         gap: 6px;
     }
@@ -2627,7 +2641,6 @@ img, svg, video {
     transition: all 0.4s ease !important;
 }
 
-/* The card expands content automatically on hover (Desktop) */
 .product-card .card-expand-content {
     max-height: 0 !important;
     opacity: 0 !important;
@@ -2638,7 +2651,9 @@ img, svg, video {
     border-top: 1px solid transparent !important;
 }
 
-/* WHEN HOVERED */
+/* WHEN HOVERED (visual highlight only, purely decorative - the actual
+   expand/collapse of the description+buttons below is driven by .expanded,
+   not hover, so only one card is ever open at a time). */
 .product-card:hover {
     border-color: #e91e63 !important; /* Outline animates in */
     box-shadow: 0 15px 35px rgba(233, 30, 99, 0.1) !important;
@@ -2646,8 +2661,20 @@ img, svg, video {
 .product-card:hover .product-image-container {
     border-color: #e91e63 !important; /* Image Outline animates in */
 }
-.product-card:hover .card-expand-content {
-    max-height: 250px !important; /* Content slides down */
+
+/* WHEN EXPANDED (clicked) - this is what actually reveals the content, and
+   grows the card open. toggleCardExpand() in JS closes every other
+   .expanded card before adding this class to the clicked one, so this rule
+   alone gives a true one-at-a-time accordion with no extra CSS needed. */
+.product-card.expanded {
+    border-color: #e91e63 !important;
+    box-shadow: 0 15px 35px rgba(233, 30, 99, 0.1) !important;
+}
+.product-card.expanded .product-image-container {
+    border-color: #e91e63 !important;
+}
+.product-card.expanded .card-expand-content {
+    max-height: 250px !important; /* Content slides down, growing the card */
     opacity: 1 !important;
     margin-top: 15px !important;
     padding-top: 15px !important;
@@ -4694,20 +4721,32 @@ img, svg, video {
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease, margin-top 0.25s ease;
     margin-top: 0;
+    padding: 0 12px;
     width: 100%;
+    box-sizing: border-box;
 }
 
-/* Hover State: Lifts card slightly & opens drawer at bottom */
+/* Hover State: light lift only, purely decorative */
 .featured-product-card:hover {
-    z-index: 10;
+    z-index: 20;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.featured-product-card:hover .card-expand-content {
-    max-height: 150px; /* Smoothly reveals description & buttons cleanly */
+/* WHEN EXPANDED (clicked) - grows the card open, same animation the site
+   used to play on hover, now triggered by click via .expanded instead.
+   toggleCardExpand() in JS already closes every other .expanded card
+   first, so this alone gives one-at-a-time. */
+.featured-product-card.expanded {
+    z-index: 20;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.featured-product-card.expanded .card-expand-content {
+    max-height: 150px; /* Content slides down, growing the card */
     opacity: 1;
     visibility: visible;
     margin-top: 12px;
+    padding: 12px 12px;
 }
 
 .featured-image-wrapper {
