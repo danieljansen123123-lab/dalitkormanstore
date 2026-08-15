@@ -54,6 +54,7 @@ window.handleRegister = async function(event) {
     const email = document.getElementById('reg-email').value;
     const phone = document.getElementById('reg-phone').value;
     const password = document.getElementById('reg-password').value;
+    const dateOfBirth = document.getElementById('reg-dob').value;
     const genderInput = document.querySelector('input[name="reg-gender"]:checked');
     const gender = genderInput ? genderInput.value : '';
     const errorMsg = document.getElementById('auth-error-msg');
@@ -75,7 +76,13 @@ window.handleRegister = async function(event) {
         return;
     }
 
-    // 3. Validate Password Criteria
+    // 3. Validate Date of Birth (must be a real date, not in the future)
+    if (!dateOfBirth || new Date(dateOfBirth) > new Date()) {
+        if (errorMsg) errorMsg.innerText = "אנא הזינו תאריך לידה תקין.";
+        return;
+    }
+
+    // 4. Validate Password Criteria
     const isPassLength = password.length >= 6;
     const hasCapital = /[A-Z]/.test(password);
     const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
@@ -97,6 +104,7 @@ window.handleRegister = async function(event) {
             email: email,
             phone: phone,
             gender: gender,
+            dateOfBirth: dateOfBirth,
             role: "user"
         });
 
@@ -114,6 +122,36 @@ window.handleRegister = async function(event) {
     } catch (error) {
         if (errorMsg) errorMsg.innerText = "שגיאה בהרשמה: " + error.message;
         console.error("Error during registration:", error);
+    }
+};
+
+// יוצרת חשבון חדש בזמן תהליך התשלום (checkout), עבור לקוחה שלא הייתה מחוברת.
+// script.js אינו מודול ולכן לא יכול לייבא ישירות מ-Firebase - לכן פעולה זו,
+// כמו handleRegister, חיה כאן וחשופה על window לקריאה מ-submitOrder.
+// בשונה מ-handleRegister הרגיל: לא מתנתקת בסוף (כדי שההזמנה תמשיך תחת
+// המשתמשת החדשה, שכבר מחוברת אוטומטית אחרי היצירה), ולא חוסמת את התשלום
+// על אימות אימייל - השליחה קורית ברקע.
+window.createAccountForCheckout = async function({ name, email, phone, password, gender, dateOfBirth }) {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "Users", user.uid), {
+            uid: user.uid,
+            fullName: name,
+            email: email,
+            phone: phone,
+            gender: gender,
+            dateOfBirth: dateOfBirth,
+            role: "user"
+        });
+
+        sendEmailVerification(user).catch(e => console.warn('Email verification send failed:', e));
+
+        return { success: true, uid: user.uid };
+    } catch (error) {
+        console.error("Error creating account during checkout:", error);
+        return { success: false, code: error.code || '', message: error.message || '' };
     }
 };
 
