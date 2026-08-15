@@ -1383,44 +1383,12 @@ window.switchAuthTab = function(tab) {
    ========================================================================== */
 
 /**
- * Standard product card template
+ * NOTE: window.createProductCardHTML is defined later in this file (near
+ * updateCartUI) with additional sale-badge/strikethrough price logic - that
+ * later assignment is the one that actually runs, since it overwrites this
+ * binding before any card rendering happens on DOMContentLoaded. An earlier,
+ * now-removed duplicate of this function here was confirmed dead code.
  */
-function createProductCardHTML(p) {
-    const svgCart = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>`;
-    const svgArrow = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
-
-    return `
-        <div class="product-card" id="card-${p.id}" onclick="toggleCardExpand('${p.id}')">
-            <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist('${p.id}')" title="הוסף למועדפים">
-                ${typeof ICONS !== 'undefined' && ICONS.wishlist ? ICONS.wishlist : '♡'}
-            </button>
-            <div class="product-image-container">
-                <img onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23fdf2f6%27/%3E%3Ccircle cx=%27150%27 cy=%27120%27 r=%2740%27 fill=%27none%27 stroke=%27%23e91e63%27 stroke-width=%273%27/%3E%3Cline x1=%27122%27 y1=%27148%27 x2=%2790%27 y2=%27180%27 stroke=%27%23e91e63%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Ctext x=%27150%27 y=%27230%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%23c2185b%27 text-anchor=%27middle%27%3EDALIT KORMAN%3C/text%3E%3C/svg%3E';" loading="lazy" src="${p.img}" alt="${p.name}" class="product-img">
-            </div>
-            <div class="product-info">
-                <span class="brand-tag">${p.brand || ''}</span>
-                <h4>${p.name}</h4>
-                <div class="price-container">
-                    <span class="price">₪${Number(p.price).toFixed(2)}</span>
-                </div>
-            </div>
-
-            <div class="card-expand-content">
-                <p class="expand-desc">${p.shortDesc || 'מוצר טיפוח איכותי ומקצועי מבית דלית קורמן.'}</p>
-                <div class="expand-actions">
-                    <button class="btn-expand-add" onclick="event.stopPropagation(); handleInCardAddToCart('${p.id}', this)">
-                        ${svgCart}
-                        <span>הוסף לעגלה</span>
-                    </button>
-                    <a href="product.html?id=${p.id}" class="btn-expand-link" onclick="event.stopPropagation();">
-                        <span>לפרטי המוצר</span>
-                        ${svgArrow}
-                    </a>
-                </div>
-            </div>
-        </div>
-    `;
-}
 
 /**
  * Featured product card template (2x2 Grid)
@@ -1852,7 +1820,28 @@ function loadProductPageDetails() {
     // עדכון שאר הפרטים בדף
     if (titleElem) titleElem.innerText = product.name;
     if (brandElem) brandElem.innerText = product.brand;
-    if (priceElem) priceElem.innerText = `₪${product.price}`;
+    if (priceElem) priceElem.innerText = `₪${Number(product.price).toFixed(2)}`;
+
+    // מבצע אחוזים פעיל: מציגים את המחיר המקורי עם קו חוצה ותג ההנחה, לצד המחיר החדש
+    const originalPriceElem = document.getElementById('page-original-price');
+    const saleBadgeElem = document.getElementById('page-sale-badge');
+    const hasPercentOff = Boolean(product.originalPrice && Number(product.originalPrice) > Number(product.price));
+    if (originalPriceElem) {
+        if (hasPercentOff) {
+            originalPriceElem.innerText = `₪${Number(product.originalPrice).toFixed(2)}`;
+            originalPriceElem.style.display = 'inline';
+        } else {
+            originalPriceElem.style.display = 'none';
+        }
+    }
+    if (saleBadgeElem) {
+        if (hasPercentOff && product.saleBadge) {
+            saleBadgeElem.innerText = product.saleBadge;
+            saleBadgeElem.style.display = 'inline';
+        } else {
+            saleBadgeElem.style.display = 'none';
+        }
+    }
 
     const refillNoteElem = document.getElementById('page-refill-note');
     if (refillNoteElem) {
@@ -3244,6 +3233,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderCarouselProducts('carousel-track-2', 'cleansers-peels');
                 }
                 if (typeof updateCartUI === 'function') window.updateCartUI();
+                // דף מוצר בודד (product.html) לא נכלל כאן בעבר - אם מישהי כבר צפתה
+                // בדף כשנתוני המבצע הגיעו (אסינכרונית, אחרי הטעינה הראשונית), המחיר
+                // המוצג היה נשאר הישן למרות ש-productsDB כבר עודכן בזיכרון.
+                if (typeof loadProductPageDetails === 'function') loadProductPageDetails();
             }
 
             // 🔒 מודיעים לכל דף שמאזין (כמו הקופה) שנתוני המבצעים הגיעו בפועל מפיירבייס,
@@ -3327,7 +3320,7 @@ window.createFeaturedProductCardHTML = function(p) {
     let badgeHtml = p.saleBadge ? `<div style="position:absolute; top:12px; right:12px; background:#e91e63; color:white; padding:4px 10px; border-radius:6px; font-weight:bold; font-size:0.8rem; z-index:10; box-shadow: 0 4px 10px rgba(233,30,99,0.3);">${p.saleBadge}</div>` : '';
 
     return `
-        <div class="product-card featured-product-card" id="card-${p.id}" style="position:relative;">
+        <div class="product-card featured-product-card" id="card-${p.id}" onclick="toggleCardExpand('${p.id}')" style="position:relative;">
             ${badgeHtml}
             <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist('${p.id}')" title="הוסף למועדפים">
                 ${typeof ICONS !== 'undefined' && ICONS.wishlist ? ICONS.wishlist : '♡'}
@@ -3467,6 +3460,64 @@ window.submitOrder = async function(event) {
             return;
         }
 
+        // 🔒 אם המשתמשת לא מחוברת, checkout.html חושף שדות ליצירת חשבון
+        // (onAuthStateChanged שם קובע את זה) - צריך לאמת אותם וליצור את
+        // החשבון כאן לפני שממשיכים, כדי שההזמנה תקושר למשתמשת האמיתית
+        // ולא תישמר בתור "guest".
+        let newlyCreatedUid = null;
+        const wasLoggedIn = Boolean(window.auth && window.auth.currentUser);
+
+        if (!wasLoggedIn) {
+            const password = document.getElementById('checkout-password')?.value || '';
+            const genderInput = document.querySelector('input[name="checkout-gender"]:checked');
+            const gender = genderInput ? genderInput.value : '';
+            const dateOfBirth = document.getElementById('checkout-dob')?.value || '';
+
+            const isPassLength = password.length >= 6;
+            const hasCapital = /[A-Z]/.test(password);
+            const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+            if (!isPassLength || !hasCapital || !hasSymbol) {
+                alert('הסיסמה אינה עומדת בכל דרישות האבטחה (לפחות 6 תווים, אות גדולה וסמל מיוחד).');
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = 'שלח הזמנה'; }
+                return;
+            }
+
+            if (!gender) {
+                alert('אנא בחרי מגדר.');
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = 'שלח הזמנה'; }
+                return;
+            }
+
+            if (!dateOfBirth || new Date(dateOfBirth) > new Date()) {
+                alert('אנא הזיני תאריך לידה תקין.');
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = 'שלח הזמנה'; }
+                return;
+            }
+
+            if (typeof window.createAccountForCheckout !== 'function') {
+                alert('אירעה שגיאה טכנית ביצירת החשבון. אנא רעני את הדף ונסי שוב.');
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = 'שלח הזמנה'; }
+                return;
+            }
+
+            if (submitBtn) submitBtn.innerText = 'יוצרת חשבון...';
+
+            const accountResult = await window.createAccountForCheckout({ name, email, phone, password, gender, dateOfBirth });
+
+            if (!accountResult.success) {
+                if (accountResult.code === 'auth/email-already-in-use') {
+                    alert('כבר קיים חשבון עם כתובת האימייל הזו. אנא התחברי לפני ביצוע ההזמנה.');
+                } else {
+                    alert('אירעה שגיאה ביצירת החשבון: ' + (accountResult.message || 'אנא נסי שוב.'));
+                }
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = 'שלח הזמנה'; }
+                return;
+            }
+
+            newlyCreatedUid = accountResult.uid;
+            if (submitBtn) submitBtn.innerText = 'שולח הזמנה...';
+        }
+
         // 🔒 מקור אמת יחיד: בדיוק אותו חישוב הנחות שמוצג בעגלה ובקופה,
         // כך שמה שהלקוח ראה לפני השליחה הוא בדיוק מה שנשמר בהזמנה.
         const { finalTotal, freeCounts } = window.calculateCartDiscounts 
@@ -3502,7 +3553,7 @@ window.submitOrder = async function(event) {
         const activeSaleForOrder = (window.activeShopSales || []).find(s => s.type === '1_plus_1' || s.type === 'buy_x_get_y');
 
         const currentUser = window.auth ? window.auth.currentUser : null;
-        const userId = currentUser ? currentUser.uid : 'guest';
+        const userId = newlyCreatedUid || (currentUser ? currentUser.uid : 'guest');
         const orderId = 'ORD-' + Math.floor(100000000000 + Math.random() * 900000000000);
 
         const orderData = {
