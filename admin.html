@@ -1114,6 +1114,10 @@
                             <option value="אחר">אחר</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>תאריך לידה</label>
+                        <input type="date" id="crm-edit-dob" class="form-control">
+                    </div>
                     <div class="form-group" style="grid-column: 1 / -1;">
                         <label>סוג עור</label>
                         <select id="crm-edit-skintype" class="status-select category-select" style="width: 100%;">
@@ -1892,6 +1896,7 @@
             document.getElementById('crm-edit-email').value = customer.email || '';
             document.getElementById('crm-edit-phone').value = customer.phone || '';
             document.getElementById('crm-edit-gender').value = customer.gender || '';
+            document.getElementById('crm-edit-dob').value = customer.dateOfBirth || '';
             document.getElementById('crm-edit-skintype').value = customer.skinType || '';
 
             document.getElementById('crm-appointments-list').innerHTML = '<div class="loading-box">טוענת תורים...</div>';
@@ -1917,6 +1922,7 @@
                     fullName: document.getElementById('crm-edit-name').value,
                     phone: document.getElementById('crm-edit-phone').value,
                     gender: document.getElementById('crm-edit-gender').value,
+                    dateOfBirth: document.getElementById('crm-edit-dob').value,
                     skinType: document.getElementById('crm-edit-skintype').value
                 };
                 await window.updateDoc(window.doc(window.db, 'Users', currentCrmCustomerUid), updates);
