@@ -119,7 +119,9 @@
             </div>
 
             <div class="price-box">
+                <span class="original-price-strikethrough" id="page-original-price" style="display:none;"></span>
                 <span class="current-price-large" id="page-price"></span>
+                <span class="sale-badge-inline" id="page-sale-badge" style="display:none;"></span>
             </div>
             <p class="refill-price-note" id="page-refill-note" style="display:none;"></p>
 
@@ -353,6 +355,10 @@
                             <span>אחר</span>
                         </label>
                     </div>
+                </div>
+                <div class="dob-field-group">
+                    <label for="reg-dob" class="dob-field-label">תאריך לידה</label>
+                    <input type="date" id="reg-dob" required>
                 </div>
 
                 <input type="password" id="reg-password" placeholder="סיסמה" required>
