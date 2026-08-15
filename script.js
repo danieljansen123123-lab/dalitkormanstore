@@ -663,6 +663,7 @@ const productsDB = {
         name: "קרם רטינואיד – Juliette Armand",
         brand: "Juliette Armand",
         price: 280,
+        refillPrice: 240,
         img: "product-photos/2000_69b19caaaa933.webp",
         shortDesc: "קרם אנטיאייג' לחידוש, שיקום ומיצוק",
         volume: "50g",
@@ -705,6 +706,7 @@ const productsDB = {
         name: "קרם ריפר – Juliette Armand",
         brand: "Juliette Armand",
         price: 250,
+        refillPrice: 200,
         img: "product-photos/2000_69b1993a4d13c.webp",
         shortDesc: "פרוביוטיקה לעור ושיקום מחסום אפידרמלי",
         volume: "50g",
@@ -747,6 +749,7 @@ const productsDB = {
         name: "קרם מולטי – Juliette Armand",
         brand: "Juliette Armand",
         price: 190,
+        refillPrice: 170,
         img: "product-photos/2000_6a4ff8709e602.webp",
         shortDesc: "לחות קלילה לעור זוהר מועשרת בוויטמינים B ו-E",
         volume: "50g",
@@ -845,6 +848,7 @@ const productsDB = {
         name: "קרם קוויאר למראה צעיר – Caviar Cream | Elements",
         brand: "Juliette Armand",
         price: 280,
+        refillPrice: 240,
         img: "product-photos/2000_69b1a040a8161.webp",
         shortDesc: "קרם עשיר בתמצית קוויאר לחיזוק ולמיצוק העור",
         volume: "50g",
@@ -1674,6 +1678,14 @@ function setupDragToScroll(wrapper) {
         isDown = true;
         dragged = false;
         wrapper.classList.add('is-dragging');
+
+        // Stop any active hold-to-glide loop and force-cancel any in-progress
+        // arrow-triggered smooth-scroll animation before the drag takes over -
+        // otherwise the browser's own smooth-scroll and this drag handler's
+        // direct scrollLeft writes fight each other for the same property.
+        stopHoldScroll();
+        wrapper.scrollLeft = wrapper.scrollLeft;
+
         startX = e.pageX;
         startScrollLeft = wrapper.scrollLeft;
     });
@@ -1841,6 +1853,17 @@ function loadProductPageDetails() {
     if (titleElem) titleElem.innerText = product.name;
     if (brandElem) brandElem.innerText = product.brand;
     if (priceElem) priceElem.innerText = `₪${product.price}`;
+
+    const refillNoteElem = document.getElementById('page-refill-note');
+    if (refillNoteElem) {
+        if (product.refillPrice) {
+            refillNoteElem.innerText = `♻️ ניתן למלא מחדש (ריפיל) ב-₪${product.refillPrice}`;
+            refillNoteElem.style.display = 'block';
+        } else {
+            refillNoteElem.style.display = 'none';
+        }
+    }
+
     if (imgElem) imgElem.src = product.img;
     if (shortDescElem) shortDescElem.innerText = product.shortDesc;
     if (longDescElem) longDescElem.innerText = product.longDesc || '';
@@ -2972,6 +2995,51 @@ window.REVIEWS_DATA = [
         name: "לקוחה מרוצה",
         rating: 5,
         text: "חייבת לכתוב לך שהעור שלי נהיה פשוט קורן, נקי, נעים! בקיץ שעבר עור הפנים שלי עבר משבר - היה מחוספס, שום איפור לא תפס עליו, והפיגמנטציה חגגה. עכשיו, אחרי כל הטיפול שלך ויחד עם המוצרים שהמלצת עליהם, העור שלי קם לתחייה. את נותנת לי המון ביטחון - פשוט מקצוענית ומחוללת פלאים! כמה כיף לי להרגיש טוב עם מי שאני, ואת חלק מזה!"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "הטיפול שעשית לי פשוט מדהים, הפנים זוהרות, מתוחות, אני מרגישה שהעור חזר לחיים 😂 והכל בזכותך, מחכה לטיפול ההמשך שקבענו, אלופה, מיליון תודות 🙏"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "אמאל'ה... שלמות! הנקבוביות אכן סגורות יותר, העור קורן, נעים!!! מדהימה!!! יש לך ידיים מדהימות! ומקצועיות"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "בוקר טוב דלית, רק רציתי לעדכן שהפנים נראו נהדר הבוקר, פשוט תענוג ❤️"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "היי דלית, רציתי לשתף אותך שבשבוע האחרון אני לא מתאפרת מרצון, כי אני אוהבת את הפנים שלי הרבה יותר בלי איפור. אתמול יצאתי עם חברים בפעם הראשונה בלי איפור והרגשתי כל כך טוב עם עצמי, בקושי נשארו לי פצעונים על הפנים. הגעתי למצב שבאמת כיף לי לטפח את הפנים והכל בזכותך תודה רבה רבה ❤️"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "בוקר טוב. משתמשת כמה ימים כבר בקרם עיניים המושלם. תקשיבי, פעם ראשונה שקרם עיניים לא עושה לי נפיחות בבוקר או גירוי! כך נעים ואיכותי. ואתמול השתמשתי במסכה המחממת ואווו איזה עור מושלם אחרי! תודה 🤩🤩🤩"
+    },
+    {
+        name: "@victoria_sweet_dream",
+        rating: 5,
+        text: "אין אין על הידיים שלך, הטיפול פנים שעשית לי היום היה חלום, אני חוויתי מלא טיפולים בחיי אבל כזאת השקעה ותוצאה אני חווה פעם ראשונה, והמחמאות שקיבלתי מהמשפחה שלי... ממתינה בקוצר רוח לטיפול הבא שלנו 😍"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "היי אהובה שלי, לא להאמין כמה קשר יש בנשמה שהבוקר חשבתי לרשום לך הודעה. אני מרגישה מעולה, הפנים שלי חלקות וכל פעם שאני מורחת את הקרם שהבאת לי אני מחייכת ונזכרת עד כמה היקום מדויק"
+    },
+    {
+        name: "לקוח מרוצה",
+        rating: 5,
+        text: "הי דלית מה נשמע? חשוב לי לכתוב לך שהטיפול איתך ממש עוזר לי למרות שאני נראה כמו חייזר עם הפצעונים האלו 😂 ואני מרגיש שאנחנו מתקדמים ושאני לא תקוע מאחור. אני שמח שאני מטופל אצלך ורוצה להגיד לך תודה רבה 😊"
+    },
+    {
+        name: "לקוחה מרוצה",
+        rating: 5,
+        text: "היי דלית, תקשיבי אני ממש בעננים, תראי את העור שלי 😍 הרבה מהפצעונים נעלמו, אני מרגישה שהעור שלי פחות יבש משמעותית"
     }
 ];
 
